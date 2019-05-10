@@ -13,6 +13,8 @@
     "pug_dev": "pug --pretty -w --out web/dist/ web/pug/index.pug",
     "sass_build": "sass web/sass:web/dist/css",
     "sass_dev": "sass --watch web/sass:web/dist/css",
+    "ts_build": "tsc --outDir web/dist/js web/ts/rouleau_app.ts",
+    "ts_dev": "tsc --watcher --outDir web/dist/js web/ts/rouleau_app.ts",
     "start": "live-server web/dist"
   },
   "repository": {
@@ -36,6 +38,7 @@
   "devDependencies": {
     "live-server": "^1.2.1",
     "pug-cli": "^1.0.0-alpha6",
-    "sass": "^1.20.1"
+    "sass": "^1.20.1",
+    "typescript": "^3.4.5"
   }
 }
