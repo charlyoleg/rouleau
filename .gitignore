@@ -1,0 +1,7 @@
+# .gitignore for rouleau
+*~
+node_modules
+*.pdf
+*.html
+*.css
+*.js
