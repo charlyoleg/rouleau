@@ -11,8 +11,9 @@
     "clean": "rm -fr web/dist",
     "pug_build": "pug --pretty --out web/dist/ web/pug/index.pug",
     "pug_dev": "pug --pretty -w --out web/dist/ web/pug/index.pug",
+    "sass_build": "sass web/sass:web/dist/css",
+    "sass_dev": "sass --watch web/sass:web/dist/css",
     "start": "live-server web/dist"
-
   },
   "repository": {
     "type": "git",
@@ -34,6 +35,7 @@
   "homepage": "https://github.com/charlyoleg/rouleau#readme",
   "devDependencies": {
     "live-server": "^1.2.1",
-    "pug-cli": "^1.0.0-alpha6"
+    "pug-cli": "^1.0.0-alpha6",
+    "sass": "^1.20.1"
   }
 }
