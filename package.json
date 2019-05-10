@@ -1,0 +1,38 @@
+{
+  "name": "rouleau",
+  "version": "1.0.0",
+  "description": "a sandbox for web technologies",
+  "main": "index.js",
+  "directories": {
+    "doc": "docs"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "pug_build": "pug --pretty --out web/dist/ web/pug/index.pug",
+    "pug_dev": "pug --pretty -w --out web/dist/ web/pug/index.pug",
+    "start": "live-server web/dist"
+
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/charlyoleg/rouleau.git"
+  },
+  "keywords": [
+    "pug",
+    "sass",
+    "ts",
+    "JAMstack",
+    "pwa",
+    "rest"
+  ],
+  "author": "charlyoleg",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/charlyoleg/rouleau/issues"
+  },
+  "homepage": "https://github.com/charlyoleg/rouleau#readme",
+  "devDependencies": {
+    "live-server": "^1.2.1",
+    "pug-cli": "^1.0.0-alpha6"
+  }
+}

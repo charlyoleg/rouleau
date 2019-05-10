@@ -1,0 +1,20 @@
+//- index.pug
+doctype html
+html(lang="fr")
+  head
+    meta(charset='utf-8')
+    title Rouleau
+    meta(name='description', content='A sandbox to experiment web technologies')
+    meta(name='author', content='charlyoleg')
+    link(rel='stylesheet', href='css/rouleau_style.css?v=1.0')
+  body
+    // Rouleau's header
+    include rouleau_header.pug
+    // Rouleau's main
+    include rouleau_main.pug
+    // Rouleau's footer
+    include rouleau_footer.pug
+    // The core logic
+    script(type='module', src='js/index.js?v=1.0')
+    // The worker
+
