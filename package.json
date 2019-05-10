@@ -8,6 +8,7 @@
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -fr web/dist",
     "pug_build": "pug --pretty --out web/dist/ web/pug/index.pug",
     "pug_dev": "pug --pretty -w --out web/dist/ web/pug/index.pug",
     "start": "live-server web/dist"
