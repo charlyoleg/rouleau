@@ -18,7 +18,7 @@
     "build" : "run-s build_html build_css build_js",
     "dev"   : "run-p -l dev_html dev_css dev_js serve",
     "serve": "live-server web/dist",
-    "start": "run-s build serve"
+    "start": "run-s clean build serve"
   },
   "repository": {
     "type": "git",
