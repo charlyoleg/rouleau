@@ -9,13 +9,16 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -fr web/dist",
-    "pug_build": "pug --pretty --out web/dist/ web/pug/index.pug",
-    "pug_dev": "pug --pretty -w --out web/dist/ web/pug/index.pug",
-    "sass_build": "sass web/sass:web/dist/css",
-    "sass_dev": "sass --watch web/sass:web/dist/css",
-    "ts_build": "tsc --outDir web/dist/js web/ts/rouleau_app.ts",
-    "ts_dev": "tsc --watcher --outDir web/dist/js web/ts/rouleau_app.ts",
-    "start": "live-server web/dist"
+    "build:html": "pug --pretty --out web/dist/ web/pug/index.pug",
+    "dev:html"  : "pug --pretty --watch --out web/dist/ web/pug/index.pug",
+    "build:css" : "sass web/sass:web/dist/css",
+    "dev:css"   : "sass --watch web/sass:web/dist/css",
+    "build:js"  : "tsc --outDir web/dist/js web/ts/rouleau_app.ts",
+    "dev:js"    : "tsc --watch --outDir web/dist/js web/ts/rouleau_app.ts",
+    "build" : "run-s build:html build:css build:js",
+    "dev"   : "run-p -l dev:html dev:css dev:js serve",
+    "serve": "live-server web/dist",
+    "start": "run-s build serve"
   },
   "repository": {
     "type": "git",
@@ -37,6 +40,7 @@
   "homepage": "https://github.com/charlyoleg/rouleau#readme",
   "devDependencies": {
     "live-server": "^1.2.1",
+    "npm-run-all": "^4.1.5",
     "pug-cli": "^1.0.0-alpha6",
     "sass": "^1.20.1",
     "typescript": "^3.4.5"

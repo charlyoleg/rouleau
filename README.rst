@@ -41,7 +41,6 @@ In a bash terminal, type::
   git clone https://github.com/charlyoleg/rouleau
   cd rouleau
   npm install
-  npm build
   npm start
 
 
