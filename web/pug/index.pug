@@ -16,5 +16,11 @@ html(lang="fr")
     include rouleau_footer.pug
     // The core logic
     script(type='module', src='js/rouleau_app.js?v=1.0')
-    // The worker
+    // The service-worker
+    script.
+      if ('serviceWorker' in navigator) {
+      navigator.serviceWorker.register('rouleau_service_worker.js')
+      .then(() => console.log('rouleau service worker installed'))
+      .catch(err => console.error('Error by installing the rouleau service worker', err));
+      }
 

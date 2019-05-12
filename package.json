@@ -10,13 +10,15 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rm -fr web/dist",
     "build_html": "pug --pretty --out web/dist/ web/pug/index.pug",
-    "dev_html"  : "pug --pretty --watch --out web/dist/ web/pug/index.pug",
-    "build_css" : "sass web/sass/rouleau_style.scss web/dist/css/rouleau_style.css",
-    "dev_css"   : "sass --watch web/sass/rouleau_style.scss web/dist/css/rouleau_style.css",
-    "build_js"  : "tsc --project web/ts",
-    "dev_js"    : "tsc --watch --project web/ts",
-    "build" : "run-s build_html build_css build_js",
-    "dev"   : "run-p -l dev_html dev_css dev_js serve",
+    "dev_html": "pug --pretty --watch --out web/dist/ web/pug/index.pug",
+    "build_css": "sass web/sass/rouleau_style.scss web/dist/css/rouleau_style.css",
+    "dev_css": "sass --watch web/sass/rouleau_style.scss web/dist/css/rouleau_style.css",
+    "build_js": "tsc --project web/ts",
+    "dev_js": "tsc --watch --project web/ts",
+    "copy_static": "cpx web/sw/rouleau_service_worker.js web/dist/",
+    "dev_static": "cpx web/sw/rouleau_service_worker.js web/dist/ --watch",
+    "build": "run-s build_html build_css build_js copy_static",
+    "dev": "run-p -l dev_html dev_css dev_js dev_static serve",
     "serve": "live-server web/dist",
     "start": "run-s clean build serve"
   },
@@ -39,10 +41,14 @@
   },
   "homepage": "https://github.com/charlyoleg/rouleau#readme",
   "devDependencies": {
+    "cpx": "^1.5.0",
     "live-server": "^1.2.1",
     "npm-run-all": "^4.1.5",
     "pug-cli": "^1.0.0-alpha6",
     "sass": "^1.20.1",
     "typescript": "^3.4.5"
+  },
+  "dependencies": {
+    "express": "^4.16.4"
   }
 }
