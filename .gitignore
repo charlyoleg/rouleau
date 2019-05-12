@@ -1,5 +1,6 @@
 # .gitignore for rouleau
 *~
+*.swp
 node_modules
 *.pdf
 *.html
