@@ -19,8 +19,8 @@ html(lang="fr")
     // The service-worker
     script.
       if ('serviceWorker' in navigator) {
-      navigator.serviceWorker.register('rouleau_service_worker.js')
-      .then(() => console.log('rouleau service worker installed'))
-      .catch(err => console.error('Error by installing the rouleau service worker', err));
+        navigator.serviceWorker.register('./rouleau_service_worker.js')
+         .then(() => console.log('rouleau service worker installed'))
+         .catch(err => console.error('Error by installing the rouleau service worker', err));
       }
 
