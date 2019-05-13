@@ -3,8 +3,4 @@
 *.swp
 node_modules
 *.pdf
-*.html
-*.css
-*.css.map
-*.js
-*.js.map
+web/dist/
