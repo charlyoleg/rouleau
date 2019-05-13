@@ -1,6 +1,22 @@
 //- rouleau_main.pug
 
 main
-  | patati patatata
-  | plouf
+  nav.navigo
+    a(href='#one') one
+    a(href='#two') two
+    a(href='#three') three
+    a(href='#four') four
+  main.heart
+    h1#one Premier truc
+    p lolo lala
+    h1#two Second stuff
+    p zouzou
+    h1#three A third one
+    p encore des trucs
+    h1#four A fourth title
+    p lali lala
+  aside.left_side
+    include left_side.pug
+  aside.right_side
+    include right_side.pug
 
