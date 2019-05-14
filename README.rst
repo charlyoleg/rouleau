@@ -33,6 +33,21 @@ HTML5_, CSS3_ and ES6_ are preferred even if they restrict the compatibility wit
 .. _`single-page application` : https://en.wikipedia.org/wiki/Single-page_application
 
 
+Requirements
+============
+
+This project requires nodejs and npm::
+
+  > node -v
+  v8.10.0
+  > npm -v
+  6.9.0
+
+To upgrade your npm version, you can try::
+
+  npm i -g npm
+
+
 Getting Started
 ===============
 
@@ -42,5 +57,15 @@ In a bash terminal, type::
   cd rouleau
   npm install
   npm start
+
+
+Dependencies
+============
+
+You can check the node-package dependencies with::
+
+  npm ls --depth=0
+  npm ls --prod --depth=0
+  npm ls --dev --depth=0
 
 
