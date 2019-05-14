@@ -7,7 +7,7 @@
     "doc": "docs"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest --verbose",
     "clean": "rm -fr web/dist",
     "build_html": "pug --pretty --out web/dist/ web/pug/index.pug",
     "dev_html": "pug --pretty --watch --out web/dist/ web/pug/index.pug",
