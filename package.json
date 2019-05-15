@@ -19,15 +19,18 @@
     "dev_sw": "cpx web/sw/rouleau_service_worker.js web/dist/ --watch",
     "build_favicon": "cpx web/favi/rouleau_favicon.svg web/dist/",
     "build_img": "cpx web/img/**/* web/dist/img",
-    "swag_yop": "swagger-jsdoc -d rest_js/src/swaggerDef.js rest_js/src/rest_yop.js -o rest_js/swagger.yaml",
     "build": "run-s build_html build_css build_js build_sw build_favicon build_img",
     "dev": "run-p -l dev_html dev_css dev_js dev_sw build_favicon build_img serve",
     "serve": "live-server web/dist",
     "start": "run-s clean_web build serve",
     "clean_yop": "rm -fr rest_js/dist",
     "lint_yop": "tslint -c rest_js/tslint.json -p rest_js/tsconfig.json --fix",
-    "build_yop": "tsc -p rest_js",
-    "serve_yop": "node rest_js/dist/rest_yop.js"
+    "build_ts_yop": "tsc -p rest_js",
+    "build_cp_yop": "cpx --clean rest_js/srv_yop.crt rest_js/dist && cpx --clean rest_js/srv_yop.key rest_js/dist",
+    "build_yop": "run-s build_ts_yop build_cp_yop",
+    "swag_yop": "swagger-jsdoc -d rest_js/src/swaggerDef.js rest_js/src/rest_yop.js -o rest_js/swagger.yaml",
+    "serve_yop": "cd rest_js/dist && node rest_yop.js",
+    "start_yop": "run-s clean_yop build_yop serve_yop"
   },
   "repository": {
     "type": "git",
