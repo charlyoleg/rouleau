@@ -2,7 +2,7 @@
 
 "use strict";
 
-//import * as yopCoreSub from "./yop_core_sub.js";
+// import * as yopCoreSub from "./yop_core_sub.js";
 import * as yopCoreSub from "./yop_core_sub";
 
 // ####################################
