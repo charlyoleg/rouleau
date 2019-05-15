@@ -28,7 +28,7 @@
     "build_ts_yop": "tsc -p rest_js",
     "build_cp_yop": "cpx --clean rest_js/srv_yop.crt rest_js/dist && cpx --clean rest_js/srv_yop.key rest_js/dist",
     "build_yop": "run-s build_ts_yop build_cp_yop",
-    "swag_yop": "swagger-jsdoc -d rest_js/src/swaggerDef.js rest_js/src/rest_yop.js -o rest_js/swagger.yaml",
+    "swag_yop": "swagger-jsdoc -d rest_js/swaggerDef.js rest_js/src/rest_yop.ts -o rest_js/swagger.yaml",
     "serve_yop": "cd rest_js/dist && node rest_yop.js",
     "start_yop": "run-s clean_yop build_yop serve_yop"
   },
