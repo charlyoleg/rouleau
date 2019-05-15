@@ -3,12 +3,16 @@
 'use strict';
 
 // A black-magic solution from ESM, waiting for the official support for es6-module by nodejs, planned with node-V12.0
-require = require("esm")(module/*, options*/);
-const yop_core = require("./yop_core.js");
+//require = require("esm")(module/*, options*/);
+//const yop_core = require("./yop_core.js");
+import * as yop_core from './yop_core.js';
 
-const express = require('express');
-const https = require('https');
-const fs = require('fs');
+//const express = require('express');
+//const https = require('https');
+//const fs = require('fs');
+import express from 'express';
+import https from 'https';
+import fs from 'fs';
 
 const ssl_options = {
     key: fs.readFileSync("./srv_yop.key"),
