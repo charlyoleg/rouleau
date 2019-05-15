@@ -9,7 +9,6 @@
   "scripts": {
     "test": "jest --verbose",
     "clean_web": "rm -fr web/dist",
-    "clean_yop": "rm -fr rest_js/dist",
     "build_html": "pug --pretty --out web/dist/ web/pug/index.pug",
     "dev_html": "pug --pretty --watch --out web/dist/ web/pug/index.pug",
     "build_css": "sass web/sass/rouleau_style.scss web/dist/css/rouleau_style.css",
@@ -25,8 +24,10 @@
     "dev": "run-p -l dev_html dev_css dev_js dev_sw build_favicon build_img serve",
     "serve": "live-server web/dist",
     "start": "run-s clean_web build serve",
+    "clean_yop": "rm -fr rest_js/dist",
+    "lint_yop": "tslint -c rest_js/tslint.json -p rest_js/tsconfig.json --fix",
     "build_yop": "tsc -p rest_js",
-    "lint_yop": "tslint -c rest_js/tslint.json -p rest_js/tsconfig.json --fix"
+    "serve_yop": "node rest_js/dist/rest_yop.js"
   },
   "repository": {
     "type": "git",
