@@ -7,6 +7,9 @@
 // ####################################
 
 class CallStatistics {
+  computeAge: number;
+  computeBirthYear: number;
+
   constructor () {
     this.computeAge = 0;
     this.computeBirthYear = 0;
