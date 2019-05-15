@@ -12,9 +12,12 @@ echo "Start the micro-service server ..."
 #openssl req -new -x509 -nodes -sha256 -days 365 -key srv_yop.key -out srv_yop.crt
 #exit
 ## launch the https restful micro-service
-gnome-terminal --working-directory=$(pwd) -- bash -c 'node rest_yop.js'
+npm run clean_yop
+npm run build_yop
+gnome-terminal --working-directory=$(pwd) -- bash -c 'npm run serve_yop'
 
 # give time to the server to start its service
+echo "waiting almost 10 seconds ..."
 sleep 2
 
 # Testing the restful-API
@@ -26,8 +29,6 @@ echo -e "\n"
 # To help the user to set this web-site as exception for the browser to allow self-certified micro-service for the cross-origin-request
 sensible-browser "https://localhost:8443/calc_age?birth_year=1998"
 
-# Start Web-UI in browser
-sensible-browser "../../web/dist/index.html"
 
 # stop the micro-service
 # Type ctrl-c in the server terminal
