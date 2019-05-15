@@ -1,4 +1,4 @@
-// rest_yop.js
+// rest_yop.ts
 
 "use strict";
 

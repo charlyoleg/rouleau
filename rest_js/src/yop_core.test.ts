@@ -1,10 +1,10 @@
-// yop_core.test.js
+// yop_core.test.ts
 
 // A black-magic solution from ESM, waiting for the official support for es6-module by nodejs, planned with node-V12.0
-require = require('esm')(module/*, options*/);
-const yop_core = require('./yop_core.js');
-// With node V12.0, this will be replaced by
-// import * as yop_core from './yop_core.js';
+//require = require('esm')(module/*, options*/);
+//const yop_core = require('./yop_core.js');
+// With node V12.0 and typescript we have
+import * as yop_core from './yop_core';
 
 test('dummy age computation', () => {
   expect(yop_core.calcAge(0)).toBe(2019);

@@ -1,4 +1,4 @@
-// yop_core_sub.js
+// yop_core_sub.ts
 
 "use strict";
 
