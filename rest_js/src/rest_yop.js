@@ -34,6 +34,22 @@ yop_rest.use('/', (req, res, next) => {
 // end points
 // ####################################
 
+/**
+ * @swagger
+ * /calc_age:
+ *   get:
+ *     description: Returns the age of the user
+ *     parameters:
+ *       - name: birth_year
+ *         in: query
+ *         required: true
+ *         description: the year of birth of the user
+ *         schema:
+ *           type:string
+ *     responses:
+ *       200:
+ *         description: the age
+ */
 yop_rest.get('/calc_age', (req, res) => {
     console.log('yop_rest: calc_age: req.query.width: '+ req.query.birth_year);
     let q_birth_year = parseInt(req.query.birth_year);
@@ -42,6 +58,22 @@ yop_rest.get('/calc_age', (req, res) => {
     res.send(r_age.toString());
 });
 
+/**
+ * @swagger
+ * /calc_birth_year:
+ *   get:
+ *     description: Returns the year of birth of the user
+ *     parameters:
+ *       - name: age
+ *         in: query
+ *         required: true
+ *         description: the age of the user
+ *         schema:
+ *           type:string
+ *     responses:
+ *       200:
+ *         description: the year of birth ot the user
+ */
 yop_rest.get('/calc_birth_year', (req, res) => {
     console.log('yop_rest: calc_year_birth: req.query.age: '+ req.query.age);
     let q_age = parseInt(req.query.age);
@@ -50,6 +82,17 @@ yop_rest.get('/calc_birth_year', (req, res) => {
 });
 
 // the sugar
+/**
+ * @swagger
+ * /call_activities:
+ *   get:
+ *     description: Returns statistics about the api activities
+ *     produces:
+ *       - application/json
+ *     responses:
+ *       200:
+ *         description: statistics
+ */
 yop_rest.get('/call_activities', (req, res) => {
     console.log('yop_rest: call_activities');
     res.json(yop_core.callActivities());
