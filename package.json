@@ -19,7 +19,7 @@
     "dev_sw": "cpx web/sw/rouleau_service_worker.js web/dist/ --watch",
     "build_favicon": "cpx web/favi/rouleau_favicon.svg web/dist/",
     "build_img": "cpx web/img/**/* web/dist/img",
-    "swag_yop": "swagger-jsdoc -d rest_js/src/swaggerDef.js rest_js/src/rest_yop.js -o rest_js/swagger.json",
+    "swag_yop": "swagger-jsdoc -d rest_js/src/swaggerDef.js rest_js/src/rest_yop.js -o rest_js/swagger.yaml",
     "build": "run-s build_html build_css build_js build_sw build_favicon build_img",
     "dev": "run-p -l dev_html dev_css dev_js dev_sw build_favicon build_img serve",
     "serve": "live-server web/dist",
