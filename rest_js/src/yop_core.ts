@@ -1,8 +1,8 @@
 // yop_core.js
 
-'use strict';
+"use strict";
 
-import * as yopCoreSub from './yop_core_sub.js';
+import * as yopCoreSub from "./yop_core_sub.js";
 
 // ####################################
 // helper stuff
@@ -19,12 +19,12 @@ const callStat = new yopCoreSub.CallStatistics();
  * @param {int} birthYear - The year of birth
  * @returns {int} age - the age of the person
  */
-function calcAge (birthYear = 2000) {
-  console.log('yop_core: calcAge: birthYear: ' + birthYear);
+function calcAge(birthYear = 2000) {
+  console.log("yop_core: calcAge: birthYear: " + birthYear);
   callStat.tickOffComputeAge();
-  let curDate = new Date()
-  let curYear = curDate.getFullYear()
-  let rAge = curYear - birthYear;
+  const curDate = new Date();
+  const curYear = curDate.getFullYear();
+  const rAge = curYear - birthYear;
   return rAge;
 }
 
@@ -33,12 +33,12 @@ function calcAge (birthYear = 2000) {
  * @param {int} age - the age of the person
  * @returns {int} birth-year - the year when the person was born
  */
-function calcBirthYear (age = 20) {
-  console.log('yop_core: calcBirthYear: age: ' + age);
+function calcBirthYear(age = 20) {
+  console.log("yop_core: calcBirthYear: age: " + age);
   callStat.tickOffComputeBirthYear();
-  let curDate = new Date()
-  let curYear = curDate.getFullYear()
-  let rBirthYear = curYear - age;
+  const curDate = new Date();
+  const curYear = curDate.getFullYear();
+  const rBirthYear = curYear - age;
   return rBirthYear;
 }
 
@@ -46,8 +46,8 @@ function calcBirthYear (age = 20) {
  * The sugar
  * @returns {json} - containing text on how oft the previous functions have been used
  */
-function callActivities () {
-  console.log('yop_core: callActivities');
+function callActivities() {
+  console.log("yop_core: callActivities");
   return { visit_stat: callStat.getStatistics() };
 }
 

@@ -24,7 +24,9 @@
     "build": "run-s build_html build_css build_js build_sw build_favicon build_img",
     "dev": "run-p -l dev_html dev_css dev_js dev_sw build_favicon build_img serve",
     "serve": "live-server web/dist",
-    "start": "run-s clean_web build serve"
+    "start": "run-s clean_web build serve",
+    "build_yop": "tsc -p rest_js",
+    "lint_yop": "tslint -c rest_js/tslint.json -p rest_js/tsconfig.json --fix"
   },
   "repository": {
     "type": "git",
