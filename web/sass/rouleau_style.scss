@@ -2,7 +2,38 @@
 // a comment not visible in the css output
 
 // sass-import includes the file instead of using the css-import statement
+@import 'rouleau_base.scss';
 @import 'rouleau_header.scss';
+
+.navigo {
+  background-color: #9999ff;
+  top: 0;
+  position: sticky;
+}
+
+.navigo a {
+  display: inline-block;
+  background-color: #99ccff;
+  padding: 0.5em;
+  border: 0.5em;
+  margin: 0.5em;
+  border-style: solid;
+  border-color: #ff9900;
+  border-radius: 2.5em;
+  border-top-left-radius: 0;
+}
+
+.island {
+  background-color: #99ccff;
+}
+
+.left_side {
+  background-color: #00cc66;
+}
+
+.right_side {
+  background-color: #ffcc99;
+}
 
 footer {
   background-color: #707000;
