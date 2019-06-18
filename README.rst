@@ -43,9 +43,15 @@ This project requires nodejs and npm::
   > npm -v
   6.9.0
 
+
 To upgrade your npm version, you can try::
 
   npm i -g npm
+
+
+Additional requirements::
+
+  sudo apt install rst2pdf evince curl
 
 
 Getting Started
