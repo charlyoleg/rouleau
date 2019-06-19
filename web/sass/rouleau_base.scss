@@ -1,9 +1,17 @@
 // rouleau_base.scss
 // This file will be included (i.e. merged) into its parent rouleau_style.scss
 
+// html {
+:root {
+  text-align: left;
+  font-size: 16px;
+  font-family: Verdana, Geneva, sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  line-height: normal;
+}
+
 body {
   background-color: #ff99ff;
-  text-align: left;
-  font-family: Verdana, Geneva, sans-serif;
 }
 

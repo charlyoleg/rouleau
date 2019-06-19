@@ -5,13 +5,22 @@
 @import 'rouleau_base.scss';
 @import 'rouleau_header.scss';
 
+body main {
+  --nav-font-size: 2vh;
+  --nav-gap-height: calc(6*var(--nav-font-size));
+}
+
 .navigo {
+  font-size: var(--nav-font-size);
   background-color: #9999ff;
   position: sticky;
   top: 0;
   width: 100%;
-  //max-height: 100px;
-  //overflow: visible;
+  max-height: var(--nav-gap-height);
+  overflow: auto;
+  margin: 0;
+  border: none;
+  padding: 0;
 }
 
 .navigo a {
@@ -26,19 +35,29 @@
   margin: 0.5em;
 }
 
+.water {
+  margin: 0;
+  border: none;
+  padding: 0;
+}
+
+.water::before {
+  display: block;
+  content: "";
+  height: var(--nav-gap-height);
+  visibility: hidden;
+  //pointer-events: none;
+}
+
 .island {
   background-color: #99ccff;
   padding: 0.5em;
   border-width: 1rem;
   border-style: solid;
   border-color: #555555;
-  border-top-width: 10rem;
-  margin: 1rem;
+  margin: 0.1rem;
 }
 
-//.navigo + .island {
-//  padding-top: 160px;
-//}
 
 .left_side {
   background-color: #00cc66;
