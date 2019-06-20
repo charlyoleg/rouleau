@@ -75,13 +75,43 @@ body main {
   margin: 0.1rem;
 }
 
+.core_columns {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
+  margin: 0.5rem;
+  border: none;
+  padding: 0.5rem;
+  //background-color: grey;
+}
+
+.core {
+  flex: 1 1 100%;
+  margin: 0 0.5rem;
+  //background-color: red;
+}
 
 .left_side {
+  flex: 0 1 20%;
+  //display: none;
   background-color: #00cc66;
 }
 
+.left_side_button {
+  flex: 0 0 1%;
+  background-color: #33cc99;
+}
+
 .right_side {
+  flex: 0 1 20%;
+  //display: none;
   background-color: #ffcc99;
+}
+
+.right_side_button {
+  flex: 0 0 1%;
+  background-color: #ffcccc;
 }
 
 footer {

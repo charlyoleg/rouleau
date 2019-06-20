@@ -12,41 +12,44 @@ main
     a(href='#seven') seven
     a(href='#eight') eight
     a(href='#about') About
-  main.heart
-    .water#one
-      .island
-        h1 Premier truc
-        p lolo lala
-    .water#two
-      .island
-        h1 Second stuff
-        p zouzou
-    .water#three
-      .island
-        h1 A third one
-        p encore des trucs
-    .water#four
-      .island
-        h1 A fourth title
-        p lali lala
-    .water#five
-      .island
-        h1 A fifth title
-        p lali lala 5
-    .water#six
-      .island
-        h1 A sixth title
-        p lali lala 6
-    .water#seven
-      .island
-        h1 A seventh title
-        p lali lala 7
-    .water#eight
-      .island
-        h1 A eighth title
-        p lali lala 8
-  aside.left_side
-    include left_side.pug
-  aside.right_side
-    include right_side.pug
+  main.core_columns
+    aside.left_side
+      include left_side.pug
+    aside.left_side_button
+    main.core
+      .water#one
+        .island
+          h1 Premier truc
+          p lolo lala
+      .water#two
+        .island
+          h1 Second stuff
+          p zouzou
+      .water#three
+        .island
+          h1 A third one
+          p encore des trucs
+      .water#four
+        .island
+          h1 A fourth title
+          p lali lala
+      .water#five
+        .island
+          h1 A fifth title
+          p lali lala 5
+      .water#six
+        .island
+          h1 A sixth title
+          p lali lala 6
+      .water#seven
+        .island
+          h1 A seventh title
+          p lali lala 7
+      .water#eight
+        .island
+          h1 A eighth title
+          p lali lala 8
+    aside.right_side_button
+    aside.right_side
+      include right_side.pug
 
