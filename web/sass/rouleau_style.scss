@@ -94,7 +94,7 @@ body main {
 
 .left_side {
   flex: 0 1 20%;
-  //display: none;
+  display: none;
   background-color: #00cc66;
 }
 
@@ -105,7 +105,7 @@ body main {
 
 .right_side {
   flex: 0 1 20%;
-  //display: none;
+  display: none;
   background-color: #ffcc99;
 }
 
@@ -119,4 +119,15 @@ footer {
   text-align: center;
 }
 
-  
+@media only screen and (min-width: 750px) {
+  .right_side {
+    display: block;
+  }
+}
+
+@media only screen and (min-width: 950px) {
+  .left_side {
+    display: block;
+  }
+}
+
