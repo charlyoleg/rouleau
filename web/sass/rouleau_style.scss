@@ -118,16 +118,32 @@ body main {
   background-color: orange;
 }
 
-.right_side {
+.right_side, .left_side {
   flex: 1 1 90%;
   display: none;
+}
+
+.right_side {
   background-color: #ffcc99;
 }
 
 .left_side {
-  flex: 1 1 90%;
-  display: none;
   background-color: #00cc66;
+}
+
+.bulle {
+  margin: 1rem;
+  margin-top: 5rem;
+  margin-bottom: 5rem;
+  transition: 0.3s;
+}
+
+.bulle:hover {
+  transform: scale(1.2, 1.2);
+}
+
+.bulle:active {
+  transform: rotate(10deg);
 }
 
 footer {
