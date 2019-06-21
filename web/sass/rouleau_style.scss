@@ -117,10 +117,6 @@ body main {
   background-color: orange;
 }
 
-.side_checkbox_label:hover {
-  box-shadow: 0 0 0.2em 0.2em hsl(65, 100%, 86%);
-}
-
 .right_side {
   flex: 1 1 90%;
   display: none;
@@ -191,6 +187,10 @@ footer > ol > li > ol > li::before {
     background-color: red;
   }
 
+  #right_side_checkbox ~ .side_checkbox_label:hover {
+    box-shadow: 0 0 0.2em 0.2em hsl(65, 100%, 86%);
+  }
+
   #right_side_checkbox:checked ~ .right_side {
     display: block;
   }
@@ -201,6 +201,10 @@ footer > ol > li > ol > li::before {
 
   #left_side_checkbox:checked ~ .side_checkbox_label {
     background-color: red;
+  }
+
+  #left_side_checkbox ~ .side_checkbox_label:hover {
+    box-shadow: 0 0 0.2em 0.2em hsl(65, 100%, 86%);
   }
 
   #left_side_checkbox:checked ~ .left_side {
