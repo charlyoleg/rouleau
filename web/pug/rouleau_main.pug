@@ -13,9 +13,11 @@ main
     a(href='#eight') eight
     a(href='#about') About
   main.core_columns
-    aside.left_side
-      include left_side.pug
-    aside.left_side_button
+    aside.left_side_shutter
+      input#left_side_checkbox(type='checkbox', checked='')
+      label.side_checkbox_label(for='left_side_checkbox')
+      aside.left_side
+        include left_side.pug
     main.core
       .water#one
         .island
@@ -49,7 +51,9 @@ main
         .island
           h1 A eighth title
           p lali lala 8
-    aside.right_side_button
-    aside.right_side
-      include right_side.pug
+    aside.right_side_shutter
+      input#right_side_checkbox(type='checkbox', checked='')
+      label.side_checkbox_label(for='right_side_checkbox')
+      aside.right_side
+        include right_side.pug
 

@@ -92,26 +92,39 @@ body main {
   //background-color: red;
 }
 
-.left_side {
-  flex: 0 1 20%;
-  display: none;
-  background-color: #00cc66;
+.right_side_shutter, .left_side_shutter {
+  flex: 0 0 1%;
+  background-color: #ffcccc;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: stretch;
 }
 
-.left_side_button {
-  flex: 0 0 1%;
-  background-color: #33cc99;
+.left_side_shutter {
+  flex-direction: row-reverse;
+}
+
+#right_side_checkbox, #left_side_checkbox {
+  display: none;
+}
+
+.side_checkbox_label {
+  flex: 1 1 100%;
+  display: block;
+  width: 1rem;
+  height: 100%;
+  background-color: orange;
 }
 
 .right_side {
-  flex: 0 1 20%;
   display: none;
   background-color: #ffcc99;
 }
 
-.right_side_button {
-  flex: 0 0 1%;
-  background-color: #ffcccc;
+.left_side {
+  display: none;
+  background-color: #00cc66;
 }
 
 footer {
@@ -119,15 +132,39 @@ footer {
   text-align: center;
 }
 
+// ============================
+// Responsive width
+// ============================
+
+// ============================
+// Show/hide side panels
+// ============================
+
 @media only screen and (min-width: 750px) {
-  .right_side {
+
+  #right_side_checkbox:checked ~ .side_checkbox_label {
+    flex: 0 0 10%;
+    background-color: red;
+  }
+
+  #right_side_checkbox:checked ~ .right_side {
+    flex: 1 1 90%;
     display: block;
   }
+
 }
 
 @media only screen and (min-width: 950px) {
-  .left_side {
+
+  #left_side_checkbox:checked ~ .side_checkbox_label {
+    flex: 0 0 10%;
+    background-color: red;
+  }
+
+  #left_side_checkbox:checked ~ .left_side {
+    flex: 1 1 90%;
     display: block;
   }
+
 }
 
