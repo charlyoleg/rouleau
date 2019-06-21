@@ -143,36 +143,34 @@ footer h1 {
 // Nice numbered nested ordered-list
 // ============================
 
-footer > ol {
-  counter-reset: footer_list_level_1;
-  padding-left: 0;
+footer ol {
+  counter-reset: footer_list;
+  padding-left: 1em;
 }
 
-footer > ol > li {
-  counter-increment: footer_list_level_1;
-  display: block;
+footer li {
+  counter-increment: footer_list;
+  list-style-type: none;
+}
+
+footer li::before {
+  content: counters(footer_list, ".") " ";
+}
+
+footer > ol {
   font-weight: bold;
 }
 
-footer > ol > li::before {
-  content: counter(footer_list_level_1) ". ";
-}
-
-footer > ol > li > ol {
-  counter-reset: footer_list_level_2;
-  padding-left: 2em;
+footer > ol ol {
   font-weight: normal;
 }
 
-footer > ol > li > ol > li {
-  counter-increment: footer_list_level_2;
+footer > ol ol::after {
+  content: "";
   display: block;
-  //padding-left: 2em;
+  height: 2em;
 }
 
-footer > ol > li > ol > li::before {
-  content: counter(footer_list_level_1) "." counter(footer_list_level_2) ". ";
-}
 
 // ============================
 // Responsive width
