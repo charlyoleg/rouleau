@@ -110,7 +110,7 @@ body main {
 }
 
 .side_checkbox_label {
-  flex: 1 1 100%;
+  flex: 1 1 10%;
   display: block;
   width: 1rem;
   height: 100%;
@@ -118,11 +118,13 @@ body main {
 }
 
 .right_side {
+  flex: 1 1 90%;
   display: none;
   background-color: #ffcc99;
 }
 
 .left_side {
+  flex: 1 1 90%;
   display: none;
   background-color: #00cc66;
 }
@@ -143,12 +145,10 @@ footer {
 @media only screen and (min-width: 750px) {
 
   #right_side_checkbox:checked ~ .side_checkbox_label {
-    flex: 0 0 10%;
     background-color: red;
   }
 
   #right_side_checkbox:checked ~ .right_side {
-    flex: 1 1 90%;
     display: block;
   }
 
@@ -157,12 +157,10 @@ footer {
 @media only screen and (min-width: 950px) {
 
   #left_side_checkbox:checked ~ .side_checkbox_label {
-    flex: 0 0 10%;
     background-color: red;
   }
 
   #left_side_checkbox:checked ~ .left_side {
-    flex: 1 1 90%;
     display: block;
   }
 
