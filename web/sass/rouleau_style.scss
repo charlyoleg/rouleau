@@ -66,11 +66,11 @@ body main {
 }
 
 .island {
-  background-color: #99ccff;
+  background-color: #cccc00;
   padding: 0.5em;
   border-width: 1rem;
   border-style: solid;
-  border-color: #555555;
+  border-color: #cccc00;
   border-radius: 2.5em;
   border-top-left-radius: 0;
   margin: 0.1rem;
@@ -95,7 +95,7 @@ body main {
 
 .right_side_shutter, .left_side_shutter {
   flex: 0 0 1%;
-  background-color: #ffcccc;
+  background-color: #e6e600;
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -115,7 +115,7 @@ body main {
   display: block;
   width: 1rem;
   height: 100%;
-  background-color: orange;
+  background-color: #999900;
 }
 
 .right_side, .left_side {
@@ -124,11 +124,11 @@ body main {
 }
 
 .right_side {
-  background-color: #ffcc99;
+  background-color: #e6e600;
 }
 
 .left_side {
-  background-color: #00cc66;
+  background-color: #e6e600;
 }
 
 .bulle {
@@ -147,7 +147,7 @@ body main {
 }
 
 footer {
-  background-color: #707000;
+  background-color: #cccc00;
   padding-bottom: 200px;
 }
 
@@ -207,7 +207,7 @@ footer h1 {
 @media only screen and (min-width: 750px) {
 
   #right_side_checkbox:checked ~ .side_checkbox_label {
-    background-color: red;
+    background-color: #999900;
   }
 
   #right_side_checkbox ~ .side_checkbox_label:hover {
@@ -223,7 +223,7 @@ footer h1 {
 @media only screen and (min-width: 950px) {
 
   #left_side_checkbox:checked ~ .side_checkbox_label {
-    background-color: red;
+    background-color: #999900;
   }
 
   #left_side_checkbox ~ .side_checkbox_label:hover {

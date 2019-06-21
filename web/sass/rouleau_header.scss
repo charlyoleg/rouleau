@@ -2,7 +2,14 @@
 // This file will be included (i.e. merged) into its parent rouleau_style.scss
 
 header {
-  background-color: #d0d000;
+  background-color: #e6e600;
   text-align: center;
 }
 
+.head_title_img {
+  width: 70vw;
+}
+
+header h2 {
+  color: #b3b300;
+}
