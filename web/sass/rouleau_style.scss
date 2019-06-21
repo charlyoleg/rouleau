@@ -139,33 +139,41 @@ footer h1 {
   text-align: center;
 }
 
+.footer_columns {
+  column-count: 3;
+  column-width: 400px;
+  column-fill: balance;
+  column-gap: 5em;
+  column-rule-style: none;
+}
+
 // ============================
 // Nice numbered nested ordered-list
 // ============================
 
-footer ol {
+.footer_columns ol {
   counter-reset: footer_list;
   padding-left: 1em;
 }
 
-footer li {
+.footer_columns li {
   counter-increment: footer_list;
   list-style-type: none;
 }
 
-footer li::before {
+.footer_columns li::before {
   content: counters(footer_list, ".") " ";
 }
 
-footer > ol {
+.footer_columns > ol {
   font-weight: bold;
 }
 
-footer > ol ol {
+.footer_columns > ol ol {
   font-weight: normal;
 }
 
-footer > ol ol::after {
+.footer_columns > ol ol::after {
   content: "";
   display: block;
   height: 2em;
