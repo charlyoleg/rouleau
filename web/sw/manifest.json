@@ -1,0 +1,22 @@
+{
+  "name": "Rouleau",
+  "short_name": "Rouleau",
+  "description": "A sandbox for playing with web technologies",
+  "icons": [
+    {
+      "src": "/rouleau_favicon_192x192.png",
+      "type": "image/png",
+      "sizes": "192x192"
+    },
+    {
+      "src": "/rouleau_favicon_512x512.png",
+      "type": "image/png",
+      "sizes": "512x512"
+    }
+  ],
+  "display": "standalone",
+  "background_color": "yellow",
+  "theme_color": "goldenrod",
+  "start_url": "/index.html"
+}
+

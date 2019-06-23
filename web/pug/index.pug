@@ -6,7 +6,9 @@ html(lang="fr")
     title Rouleau
     meta(name='description', content='A sandbox to experiment web technologies')
     meta(name='author', content='charlyoleg')
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')
     link(rel='stylesheet', href='css/rouleau_style.css?v=1.0')
+    link(rel='manifest', href='/manifest.json')
     link(rel='icon', href='rouleau_favicon.svg', type='image/svg+xml')
   body
     // Rouleau's header
@@ -23,5 +25,7 @@ html(lang="fr")
         navigator.serviceWorker.register('./rouleau_service_worker.js')
          .then(() => console.log('rouleau service worker installed'))
          .catch(err => console.error('Error by installing the rouleau service worker', err));
+      } else {
+        console.warn('Service Worker not supported in this browser');
       }
 
