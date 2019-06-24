@@ -75,3 +75,24 @@ You can check the node-package dependencies with::
   npm ls --dev --depth=0
 
 
+Deployment instances
+====================
+
+Because the Rouleau's front-end is a static website, it can be built and deployed by free CDN solutions like Netlify_ or CloudFare_.
+
+.. _Netlify : https://www.netlify.com/
+.. _CloudFare : https://www.cloudflare.com/
+
+
+With Netlify:
+
+  - Netlify-Rouleau-status_
+  - Netlify-Rouleau-instance_
+
+.. _Netlify-Rouleau-status : https://app.netlify.com/sites/focused-noether-cb58af/overview
+.. _Netlify-Rouleau-instance : https://focused-noether-cb58af.netlify.com/
+
+
+With CloudFare:
+
+
