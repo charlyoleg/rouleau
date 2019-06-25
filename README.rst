@@ -78,11 +78,15 @@ You can check the node-package dependencies with::
 Deployment instances
 ====================
 
-Because the Rouleau's front-end is a static website, it can be built and deployed by free CDN solutions like Netlify_, CloudFare_ or FireBase_.
+Because the Rouleau's front-end is a static website, it can be built and deployed by free CDN solutions like Netlify_, CloudFare_, FireBase_, AWS_, Surge.sh_, aerobic_ and Now.sh_.
 
 .. _Netlify : https://www.netlify.com/
 .. _CloudFare : https://www.cloudflare.com/
 .. _FireBase : https://firebase.google.com/
+.. _AWS : https://aws.amazon.com/getting-started/tutorials/deploy-react-app-cicd-amplify/
+.. _Surge.sh : https://surge.sh/
+.. _aerobic : https://www.aerobatic.com/
+.. _Now.sh : https://zeit.co/now
 
 
 With Netlify:
@@ -93,13 +97,18 @@ With Netlify:
 .. _Netlify-Rouleau-status : https://app.netlify.com/sites/focused-noether-cb58af/overview
 .. _Netlify-Rouleau-instance : https://focused-noether-cb58af.netlify.com/
 
+With Surge.sh:
 
-With CloudFare:
+- surge-Rouleau-instance_
 
-- TODO
+.. _surge-Rouleau-instance : http://crowded-ice.surge.sh/
 
+With Now.sh:
 
-With FireBase:
+- now-Rouleau-instance_
+- now-Rouleau-instance-alias_
 
-- TODO
+.. _now-Rouleau-instance : https://dist-qbsupg3ph.now.sh/
+.. _now-Rouleau-instance-alias : https://dist.charlyoleg.now.sh/
+
 
