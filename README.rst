@@ -78,14 +78,14 @@ You can check the node-package dependencies with::
 Deployment instances
 ====================
 
-Because the Rouleau's front-end is a static website, it can be built and deployed by free CDN solutions like Netlify_, CloudFare_, FireBase_, AWS_, Surge.sh_, aerobic_ and Now.sh_.
+Because the Rouleau's front-end is a static website, it can be built and deployed by free CDN solutions like Netlify_, CloudFlare_, FireBase_, AWS_, Surge.sh_, Aerobic_ and Now.sh_.
 
 .. _Netlify : https://www.netlify.com/
-.. _CloudFare : https://www.cloudflare.com/
+.. _CloudFlare : https://www.cloudflare.com/
 .. _FireBase : https://firebase.google.com/
 .. _AWS : https://aws.amazon.com/getting-started/tutorials/deploy-react-app-cicd-amplify/
 .. _Surge.sh : https://surge.sh/
-.. _aerobic : https://www.aerobatic.com/
+.. _Aerobic : https://www.aerobatic.com/
 .. _Now.sh : https://zeit.co/now
 
 
