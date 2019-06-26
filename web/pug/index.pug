@@ -24,7 +24,7 @@ html(lang="fr")
       if ('serviceWorker' in navigator) {
         navigator.serviceWorker.register('./rouleau_service_worker.js')
          .then(() => console.log('rouleau service worker installed'))
-         .catch(err => console.error('Error by installing the rouleau service worker', err));
+         .catch(err => console.error('Error by installing the rouleau service worker:', err));
       } else {
         console.warn('Service Worker not supported in this browser');
       }
