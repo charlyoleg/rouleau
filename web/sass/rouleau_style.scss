@@ -178,7 +178,7 @@ footer h1 {
 }
 
 .footer_columns li::before {
-  content: counters(footer_list, ".") " ";
+  content: counters(footer_list, ".") ". ";
 }
 
 .footer_columns > ol {
