@@ -127,7 +127,7 @@ function fromCache(request) {
 function update(request) {
   return caches.open(CACHE).then(function (cache) {
     return fetch(request).then(function (response) {
-      console.log('INFO129: Update cache: ', request.url);
+      //console.log('INFO129: Update cache: ', request.url);
       return cache.put(request, response);
     });
   });
