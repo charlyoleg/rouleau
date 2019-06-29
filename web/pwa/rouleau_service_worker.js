@@ -17,16 +17,16 @@ self.addEventListener('activate', function(evt) {
 });
 
 self.addEventListener('fetch', function(evt) {
-  console.log('INFO020: The Rouleau service worker is serving the asset:', evt.request.url);
-  evt.respondWith(fromCache(evt.request)
-  //evt.respondWith(cacheOrNetwork(evt.request)
+  //console.log('INFO020: The Rouleau service worker is serving the asset:', evt.request.url);
+  //evt.respondWith(fromCache(evt.request)
+  evt.respondWith(cacheOrNetwork(evt.request)
   //evt.respondWith(networkOrCache(evt.request)
   //evt.respondWith(networkTimeoutOrCache(evt.request, 400)
   .catch(function () {
     console.log('INFO026: Fallback of fallback for: ', evt.request.url);
     return useFallback();
   }));
-  //evt.waitUntil(update(evt.request));
+  evt.waitUntil(update(evt.request));
 });
 
 function precache() {
@@ -61,15 +61,15 @@ function networkOrCache(request) {
   return fetch(request)
   .then(function (response) {
     if (response.ok) {
-      console.log('INFO063: File from network: ', request.url);
+      //console.log('INFO063: File from network: ', request.url);
       return response;
     } else {
-      console.log('INFO066: File from cache because network.nok: ', request.url);
+      //console.log('INFO066: File from cache because network.nok: ', request.url);
       return fromCache(request);
     }
   })
   .catch(function () {
-    console.log('INFO071: File from cache because network error: ', request.url);
+    //console.log('INFO071: File from cache because network error: ', request.url);
     return fromCache(request);
   });
 }
@@ -78,15 +78,15 @@ function networkTimeoutOrCache(request, timeout) {
   return fromNetworkTimeout(request, timeout)
   .then(function (response) {
     if (response.ok) {
-      console.log('INFO080: File from network: ', request.url);
+      //console.log('INFO080: File from network: ', request.url);
       return response;
     } else {
-      console.log('INFO083: File from cache because network.nok: ', request.url);
+      //console.log('INFO083: File from cache because network.nok: ', request.url);
       return fromCache(request);
     }
   })
   .catch(function () {
-    console.log('INFO088: File from cache because network error: ', request.url);
+    //console.log('INFO088: File from cache because network error: ', request.url);
     return fromCache(request);
   });
 }
@@ -94,12 +94,12 @@ function networkTimeoutOrCache(request, timeout) {
 function cacheOrNetwork(request) {
   return fromCache(request)
   .then(function (response) {
-    console.log('INFO096: File from cache: ', request.url);
+    //console.log('INFO096: File from cache: ', request.url);
     return response;
   })
   .catch(function (error) {
-    console.log('INFO100: Error by searching in cache: ', error)
-    console.log('INFO101: File not in cache, fallback to network: ', request.url);
+    //console.log('INFO100: Error by searching in cache: ', error)
+    //console.log('INFO101: File not in cache, fallback to network: ', request.url);
     return fetch(request);
   });
 }
@@ -109,7 +109,7 @@ function fromNetworkTimeout(request, timeout) {
     var timeoutId = setTimeout(reject, timeout);
     fetch(request).then(function (response) {
       clearTimeout(timeoutId);
-      console.log('INFO111: From networkTimeout: ', request.url);
+      //console.log('INFO111: From networkTimeout: ', request.url);
       fulfill(response);
     }, reject);
   });
@@ -118,7 +118,7 @@ function fromNetworkTimeout(request, timeout) {
 function fromCache(request) {
   return caches.open(CACHE).then(function (cache) {
     return cache.match(request).then(function (matching) {
-      console.log('INFO120: From cache: ', request.url);
+      //console.log('INFO120: From cache: ', request.url);
       return matching || Promise.reject('no-match');
     });
   });
