@@ -18,40 +18,41 @@ self.addEventListener('activate', function(evt) {
 
 self.addEventListener('fetch', function(evt) {
   console.log('INFO020: The Rouleau service worker is serving the asset:', evt.request.url);
-  //evt.respondWith(fromCache(evt.request)
-  evt.respondWith(cacheOrNetwork(evt.request)
+  evt.respondWith(fromCache(evt.request)
+  //evt.respondWith(cacheOrNetwork(evt.request)
   //evt.respondWith(networkOrCache(evt.request)
   //evt.respondWith(networkTimeoutOrCache(evt.request, 400)
   .catch(function () {
     console.log('INFO026: Fallback of fallback for: ', evt.request.url);
     return useFallback();
   }));
-  evt.waitUntil(update(evt.request));
+  //evt.waitUntil(update(evt.request));
 });
 
 function precache() {
   return caches.open(CACHE).then(function (cache) {
     console.log('INFO034: Preloading the app-shell in cache');
     return cache.addAll([
-      './index.html',
-      './rouleau_favicon.svg',
-      './manifest.json',
-      './rouleau_favicon_512x512.png',
-      './rouleau_favicon_192x192.png',
-      './rouleau_service_worker.js',
-      './css/rouleau_style.css',
-      './js/rouleau_sub.js',
-      './js/rouleau_app.js',
-      './img/mouse.svg',
-      './img/antenne.svg',
-      './img/thunder.svg',
-      './img/boat.svg',
-      './img/escargot.svg',
-      './img/wurm.svg',
-      './img/rouleau_header_title.svg',
-      './img/man.svg',
-      './img/bat.svg',
-      './img/pirate.svg'
+      '/',
+      '/index.html',
+      '/rouleau_favicon.svg',
+      '/manifest.json',
+      '/rouleau_favicon_512x512.png',
+      '/rouleau_favicon_192x192.png',
+      '/rouleau_service_worker.js',
+      '/css/rouleau_style.css',
+      '/js/rouleau_sub.js',
+      '/js/rouleau_app.js',
+      '/img/mouse.svg',
+      '/img/antenne.svg',
+      '/img/thunder.svg',
+      '/img/boat.svg',
+      '/img/escargot.svg',
+      '/img/wurm.svg',
+      '/img/rouleau_header_title.svg',
+      '/img/man.svg',
+      '/img/bat.svg',
+      '/img/pirate.svg'
     ]);
   });
 }
