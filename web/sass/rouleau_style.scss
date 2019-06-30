@@ -155,12 +155,39 @@ footer h1 {
   text-align: center;
 }
 
+footer h2 {
+  text-align: left;
+}
+
 .footer_columns {
   column-count: 3;
   column-width: 400px;
   column-fill: balance;
   column-gap: 5em;
   column-rule-style: none;
+}
+
+.pwa_install_buttons {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0.5rem;
+  border: none;
+  padding: 0.5rem;
+  //background-color: grey;
+}
+
+.pwa_install_buttons button {
+  flex: 1 1 20%;
+  margin: 0 0.5rem;
+  //background-color: red;
+}
+
+.pwa_install_status {
+  flex: 1 1 20%;
+  margin: 0 0.5rem;
+  background-color: red;
 }
 
 // ============================

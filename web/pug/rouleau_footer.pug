@@ -1,7 +1,8 @@
 //- rouleau_footer.pug
 
-footer#about
-  h1 Plein de liens
+footer#apropos
+  h1 Apropos
+  h2 A bunch a links
   .footer_columns
     ol(type=1)
 
@@ -111,4 +112,15 @@ footer#about
             a(href='about:cache') View browser caches
           li
             a(href='about:config') Browser configuration
+
+  .rouleau_fingerprint
+    h2 Rouleau's fingerprint
+    p PWA Rouleau Version 0.1.0.0
+    p Build on 2019/06/29
+  .pwa_installation
+    h2 PWA Rouleau Installation
+    .pwa_install_buttons
+      button#pwauninstall(type='button') Uninstall Rouleau
+      .pwa_install_status Rouleau is not installed on this device
+      button#pwainstall(type='button') Install Rouleau
 

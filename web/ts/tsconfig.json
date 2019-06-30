@@ -2,7 +2,9 @@
   "compilerOptions": {
     "module": "es6",
     "target": "es6",
-    "strict": true,
+    "strict": false,
+    "strictPropertyInitialization": false,
+    "strictNullChecks": false,
     "noImplicitAny": true,
     "sourceMap": true,
     "typeRoots": ["node_modules/@types"],
