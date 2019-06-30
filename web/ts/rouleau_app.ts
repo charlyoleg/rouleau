@@ -15,9 +15,9 @@ rlSub.abc();
 // =========================
 
 // html elements
-const btn_pwainstall:HTMLButtonElement = document.querySelector("#pwainstall");
-const btn_pwauninstall:HTMLButtonElement = document.querySelector("#pwauninstall");
-const pwa_install_status:HTMLElement = document.querySelector(".pwa_install_status");
+const btn_pwainstall:HTMLButtonElement = document.querySelector("#pwa_install");
+const btn_pwauninstall:HTMLButtonElement = document.querySelector("#pwa_uninstall");
+const pwa_install_status:HTMLElement = document.querySelector("#pwa_install_status");
 
 // variable declarations
 let deferredPrompt:BeforeInstallPromptEvent;

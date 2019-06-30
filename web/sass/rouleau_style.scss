@@ -153,10 +153,12 @@ footer {
 
 footer h1 {
   text-align: center;
+  color: #e6e600
 }
 
 footer h2 {
   text-align: left;
+  color: #ffff80
 }
 
 .footer_columns {
@@ -167,7 +169,14 @@ footer h2 {
   column-rule-style: none;
 }
 
-.pwa_install_buttons {
+.rouleau_fingerprint p {
+  margin: 0;
+  margin-left: 3rem;
+  padding: 0.05rem;
+}
+
+// action bar with status and buttons
+.action_bar {
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -178,14 +187,48 @@ footer h2 {
   //background-color: grey;
 }
 
-.pwa_install_buttons button {
+.one_button {
   flex: 1 1 20%;
-  margin: 0 0.5rem;
-  //background-color: red;
+  text-align: center;
 }
 
-.pwa_install_status {
-  flex: 1 1 20%;
+.one_status {
+  flex: 1 1 40%;
+  text-align: left;
+}
+
+.action_button {
+  color: #003399;
+  background-color: #99ccff;
+  padding: 0.5em;
+  border-style: solid;
+  border-width: 0.5em;
+  border-color: #ff9900;
+  border-radius: 2.5em;
+  margin: 0.5em;
+  font-weight: 600;
+  box-shadow: 0 0 0.5em 0 hsl(65, 100%, 86%);
+}
+
+.action_button:hover {
+  color: #0066cc;
+  background-color: #ccccff;
+  border-color: #ffcc00;
+  box-shadow: 0 0 0.5em 0.2em hsl(65, 100%, 86%);
+}
+
+.action_button:active {
+  color: #ffffff;
+  box-shadow: 0 0 0.5em 0.5em hsl(65, 100%, 86%);
+}
+
+.action_button:disabled {
+  background-color: #557788;
+  border-color: #995500;
+  box-shadow: none;
+}
+
+.action_status {
   margin: 0 0.5rem;
   background-color: #ff9933;
 }

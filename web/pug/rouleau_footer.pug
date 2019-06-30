@@ -39,6 +39,8 @@ footer#apropos
             a(href='https://en.wikipedia.org/wiki/Single-page_application') SPA: Single Page Application
           li
             a(href='https://serviceworke.rs/') Servie Worker Recipes
+          li
+            a(href='https://developers.google.com/web/ilt/pwa/caching-files-with-service-worker') Caching files with service-worker
 
       li Web Reference
         ol(type=1)
@@ -117,10 +119,15 @@ footer#apropos
     h2 Rouleau's fingerprints
     p PWA Rouleau Version 0.1.0.0
     p Build on 2019/06/29
+
   .pwa_installation
     h2 PWA Rouleau Installation
-    .pwa_install_buttons
-      button#pwauninstall(type='button', disabled='disabled') Uninstall Rouleau
-      .pwa_install_status The PWA Rouleau is not installed on this device
-      button#pwainstall(type='button', disabled='disabled') Install Rouleau
+    .action_bar
+      .one_button
+        button#pwa_uninstall.action_button(type='button', disabled='disabled') Uninstall Rouleau
+      .one_status
+        span#pwa_install_status.action_status The PWA Rouleau is not installed on this device
+      .one_button
+        button#pwa_install.action_button(type='button', disabled='disabled') Install Rouleau
+
 
