@@ -2,11 +2,18 @@
 
 import * as rlSub from './rouleau_sub.js';
 
+// dummy stuff to be deleted at the end of development
 console.log("Hello from rouleau_app.ts");
 rlSub.abc();
 
-const btn_pwainstall = document.querySelector("#pwainstall");
+// html elements
+const btn_pwainstall:HTMLElement = document.querySelector("#pwainstall");
+const btn_pwauninstall:HTMLElement = document.querySelector("#pwauninstall");
+const pwa_install_status:HTMLElement = document.querySelector(".pwa_install_status");
+
+// variable declarations
 let deferredPrompt:Event;
+
 
 // browser triggers the following event if this app matches the PWA criteria!
 window.addEventListener('beforeinstallprompt', (evt:Event) => {
@@ -17,6 +24,11 @@ window.addEventListener('beforeinstallprompt', (evt:Event) => {
   deferredPrompt = evt;
   // Update UI notify the user they can add to home screen
   //btn_pwainstall.style.display = 'block';
+});
+
+// check is the pwa has been installed
+window.addEventListener('btn_appinstalled', (evt:Event) => {
+  console.log('a2hs installed');
 });
 
 // Button to install the app
@@ -36,11 +48,12 @@ btn_pwainstall.addEventListener('click', (evt:Event) => {
   //    }
   //    //deferredPrompt = null;
   //  });
+  pwa_install_status.innerHTML = "Rouleau has been installed";
 });
 
-// check is the pwa has been installed
-window.addEventListener('btn_appinstalled', (evt:Event) => {
-  console.log('a2hs installed');
+// Button to uninstall the app
+btn_pwauninstall.addEventListener('click', (evt:Event) => {
+  console.log('Click on btn_pwauninstall');
+  pwa_install_status.innerHTML = "Rouleau has been uninstalled";
 });
-
 
