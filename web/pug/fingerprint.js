@@ -45,3 +45,7 @@ exports.git_commit_message = gitInfo.commitMessage;
 //console.log("git_commit_date:", exports.git_commit_date);
 //console.log("git_commit_message:", exports.git_commit_message);
 
+// enable/disable service worker
+exports.with_service_worker = process.env.WITH_SERVICE_WORKER;
+console.log("with_service_worker:", exports.with_service_worker);
+

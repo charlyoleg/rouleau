@@ -12,7 +12,7 @@
     "view_docs": "evince docs/rouleau_concept.pdf",
     "the_docs": "run-s build_docs view_docs",
     "clean_web": "rm -fr web/dist",
-    "build_html": "pug -O web/pug/fingerprint.js -O '{with_service_worker: \"true\"}' --pretty --out web/dist/ web/pug/index.pug",
+    "build_html": "WITH_SERVICE_WORKER=true pug -O web/pug/fingerprint.js --pretty --out web/dist/ web/pug/index.pug",
     "build_html_dev": "pug -O web/pug/fingerprint.js --pretty --out web/dist/ web/pug/index.pug",
     "dev_html": "pug -O web/pug/fingerprint.js --pretty --watch --out web/dist/ web/pug/index.pug",
     "build_css": "sass web/sass/rouleau_style.scss web/dist/css/rouleau_style.css",
