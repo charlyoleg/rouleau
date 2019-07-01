@@ -13,7 +13,7 @@
     "the_docs": "run-s build_docs view_docs",
     "clean_web": "rm -fr web/dist",
     "build_html": "pug -O web/pug/fingerprint.js --pretty --out web/dist/ web/pug/index.pug",
-    "dev_html": "pug --pretty --watch --out web/dist/ web/pug/index.pug",
+    "dev_html": "pug -O web/pug/fingerprint.js --pretty --watch --out web/dist/ web/pug/index.pug",
     "build_css": "sass web/sass/rouleau_style.scss web/dist/css/rouleau_style.css",
     "dev_css": "sass --watch web/sass/rouleau_style.scss web/dist/css/rouleau_style.css",
     "build_js": "tsc --project web/ts",
