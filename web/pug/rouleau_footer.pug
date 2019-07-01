@@ -116,18 +116,24 @@ footer#apropos
             a(href='about:config') Browser configuration
 
   .rouleau_fingerprint
-    h2 Rouleau's fingerprints
-    p PWA Rouleau Version 0.1.0.0
-    p Build on 2019/06/29
+    h2 Rouleau's fingerprint
+    p= 'PWA Rouleau Version: ' + version
+    p= 'build on: ' + build_date
+    p Source code information:
+    p= 'git repo: ' + git_repo_name
+    p= 'git branch: ' + git_branch_name
+    p= 'git commit hash: ' + git_commit_hash
+    p= 'git commit date: ' + git_commit_date
+    p= 'git commit message: ' + git_commit_message
 
   .pwa_installation
     h2 PWA Rouleau Installation
     .action_bar
       .one_button
-        button#pwa_uninstall.action_button(type='button', disabled='disabled') Uninstall Rouleau
+        button#pwa_uninstall.action_button(type='button', disabled=true) Uninstall Rouleau
       .one_status
         span#pwa_install_status.action_status The PWA Rouleau is not installed on this device
       .one_button
-        button#pwa_install.action_button(type='button', disabled='disabled') Install Rouleau
+        button#pwa_install.action_button(type='button', disabled=true) Install Rouleau
 
 
