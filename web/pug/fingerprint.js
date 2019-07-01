@@ -1,6 +1,8 @@
 // fingerprint.js
 // generates values at build time
 
+const gitRepoInfo = require('git-repo-info');
+
 // adjust manually
 major_minor_hotfix = '0.1.0';
 
@@ -20,12 +22,19 @@ exports.version = major_minor_hotfix + '.' + build_number.toString();
 exports.build_date = current_date.toUTCString();
 //exports.hostname = 'nafnaf';
 //exports.username = 'charlyoleg';
-exports.git_repo_name = 'rouleau';
-exports.git_branch_name = 'master';
-exports.git_commit_hash = 'abc';
-exports.git_commit_author = 'abc';
-exports.git_commit_date = 'abci2';
-exports.git_commit_message = 'abc3';
+
+try {
+  let gitInfo = gitRepoInfo();
+  //console.log(gitInfo.root);
+  exports.git_repo_name = gitInfo.root.replace(/^.*\//g, '');
+  exports.git_branch_name = gitInfo.branch;
+  exports.git_commit_hash = gitInfo.sha;
+  exports.git_commit_author = gitInfo.author;
+  exports.git_commit_date = gitInfo.authorDate;
+  exports.git_commit_message = gitInfo.commitMessage;
+} catch(err) {
+  console.log("WARN045: It is probably not a git repo:", err);
+}
 
 // printf for debug
 console.log("fingerprint info:");
