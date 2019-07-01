@@ -23,6 +23,7 @@ exports.build_date = current_date.toUTCString();
 exports.git_repo_name = 'rouleau';
 exports.git_branch_name = 'master';
 exports.git_commit_hash = 'abc';
+exports.git_commit_author = 'abc';
 exports.git_commit_date = 'abci2';
 exports.git_commit_message = 'abc3';
 
@@ -33,6 +34,7 @@ console.log("build_date:", exports.build_date);
 console.log("git_repo_name:", exports.git_repo_name);
 console.log("git_branch_name:", exports.git_branch_name);
 console.log("git_commit_hash:", exports.git_commit_hash);
+console.log("git_commit_author:", exports.git_commit_author);
 console.log("git_commit_date:", exports.git_commit_date);
 console.log("git_commit_message:", exports.git_commit_message);
 
