@@ -23,27 +23,25 @@ exports.build_date = current_date.toUTCString();
 //exports.hostname = 'nafnaf';
 //exports.username = 'charlyoleg';
 
-try {
-  let gitInfo = gitRepoInfo();
-  //console.log(gitInfo.root);
+let gitInfo = gitRepoInfo();
+//console.log(gitInfo.root);
+if(gitInfo.root !== null){
   exports.git_repo_name = gitInfo.root.replace(/^.*\//g, '');
-  exports.git_branch_name = gitInfo.branch;
-  exports.git_commit_hash = gitInfo.sha;
-  exports.git_commit_author = gitInfo.author;
-  exports.git_commit_date = gitInfo.authorDate;
-  exports.git_commit_message = gitInfo.commitMessage;
-} catch(err) {
-  console.log("WARN045: It is probably not a git repo:", err);
 }
+exports.git_branch_name = gitInfo.branch;
+exports.git_commit_hash = gitInfo.sha;
+exports.git_commit_author = gitInfo.author;
+exports.git_commit_date = gitInfo.authorDate;
+exports.git_commit_message = gitInfo.commitMessage;
 
 // printf for debug
-console.log("fingerprint info:");
-console.log("version:", exports.version);
-console.log("build_date:", exports.build_date);
-console.log("git_repo_name:", exports.git_repo_name);
-console.log("git_branch_name:", exports.git_branch_name);
-console.log("git_commit_hash:", exports.git_commit_hash);
-console.log("git_commit_author:", exports.git_commit_author);
-console.log("git_commit_date:", exports.git_commit_date);
-console.log("git_commit_message:", exports.git_commit_message);
+//console.log("fingerprint info:");
+//console.log("version:", exports.version);
+//console.log("build_date:", exports.build_date);
+//console.log("git_repo_name:", exports.git_repo_name);
+//console.log("git_branch_name:", exports.git_branch_name);
+//console.log("git_commit_hash:", exports.git_commit_hash);
+//console.log("git_commit_author:", exports.git_commit_author);
+//console.log("git_commit_date:", exports.git_commit_date);
+//console.log("git_commit_message:", exports.git_commit_message);
 
