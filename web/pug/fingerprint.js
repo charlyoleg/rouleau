@@ -25,6 +25,7 @@ exports.build_date = current_date.toUTCString();
 
 let gitInfo = gitRepoInfo();
 //console.log(gitInfo.root);
+console.log(gitInfo);
 if(gitInfo.root !== null){
   exports.git_repo_name = gitInfo.root.replace(/^.*\//g, '');
 }
