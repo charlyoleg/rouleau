@@ -17,36 +17,33 @@ if (build_number === undefined){
 
 let current_date = new Date();
 
-// the exports
-exports.version = major_minor_hotfix + '.' + build_number.toString();
-exports.build_date = current_date.toUTCString();
-//exports.hostname = 'nafnaf';
-//exports.username = 'charlyoleg';
+// the fingerprint
+let fingerprint = {};
+
+fingerprint.version = major_minor_hotfix + '.' + build_number.toString();
+fingerprint.build_date = current_date.toUTCString();
+//fingerprint.hostname = 'nafnaf';
+//fingerprint.username = 'charlyoleg';
 
 let gitInfo = gitRepoInfo();
-//console.log(gitInfo.root);
 console.log(gitInfo); // investigating a bug of git-repo-info
-if(gitInfo.root !== null){
-  exports.git_repo_name = gitInfo.root.replace(/^.*\//g, '');
-}
-exports.git_branch_name = gitInfo.branch;
-exports.git_commit_hash = gitInfo.sha;
-exports.git_commit_author = gitInfo.author;
-exports.git_commit_date = gitInfo.authorDate;
-exports.git_commit_message = gitInfo.commitMessage;
 
-// printf for debug
-//console.log("fingerprint info:");
-//console.log("version:", exports.version);
-//console.log("build_date:", exports.build_date);
-//console.log("git_repo_name:", exports.git_repo_name);
-//console.log("git_branch_name:", exports.git_branch_name);
-//console.log("git_commit_hash:", exports.git_commit_hash);
-//console.log("git_commit_author:", exports.git_commit_author);
-//console.log("git_commit_date:", exports.git_commit_date);
-//console.log("git_commit_message:", exports.git_commit_message);
+//console.log(gitInfo.root);
+if(gitInfo.root !== null){
+  fingerprint.git_repo_name = gitInfo.root.replace(/^.*\//g, '');
+}
+fingerprint.git_branch_name = gitInfo.branch;
+fingerprint.git_commit_hash = gitInfo.sha;
+fingerprint.git_commit_author = gitInfo.author;
+fingerprint.git_commit_date = gitInfo.authorDate;
+fingerprint.git_commit_message = gitInfo.commitMessage;
 
 // enable/disable service worker
-exports.with_service_worker = process.env.WITH_SERVICE_WORKER;
-console.log("with_service_worker:", exports.with_service_worker);
+fingerprint.with_service_worker = process.env.WITH_SERVICE_WORKER;
+
+// printf for debug
+console.log("fingerprint info:\n", fingerprint);
+
+// the exports
+exports.fingerprint = fingerprint;
 

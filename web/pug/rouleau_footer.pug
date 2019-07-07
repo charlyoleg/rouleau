@@ -117,15 +117,15 @@ footer#apropos
 
   .rouleau_fingerprint
     h2 Rouleau's fingerprint
-    p= 'PWA Rouleau Version: ' + version
-    p= 'build on: ' + build_date
+    p= 'PWA Rouleau Version: ' + fingerprint.version
+    p= 'build on: ' + fingerprint.build_date
     p Source code information:
-    p= 'git repo: ' + git_repo_name
-    p= 'git branch: ' + git_branch_name
-    p= 'git commit hash: ' + git_commit_hash
-    p= 'git commit author: ' + git_commit_author
-    p= 'git commit date: ' + git_commit_date
-    p= 'git commit message: ' + git_commit_message
+    p= 'git repo: ' + fingerprint.git_repo_name
+    p= 'git branch: ' + fingerprint.git_branch_name
+    p= 'git commit hash: ' + fingerprint.git_commit_hash
+    p= 'git commit author: ' + fingerprint.git_commit_author
+    p= 'git commit date: ' + fingerprint.git_commit_date
+    p= 'git commit message: ' + fingerprint.git_commit_message
 
   .pwa_installation
     h2 PWA Rouleau Installation
