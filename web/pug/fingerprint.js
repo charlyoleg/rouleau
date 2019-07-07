@@ -42,7 +42,7 @@ fingerprint.git_commit_message = gitInfo.commitMessage;
 fingerprint.with_service_worker = process.env.WITH_SERVICE_WORKER;
 
 // printf for debug
-console.log("fingerprint info:\n", fingerprint);
+//console.log("fingerprint info:\n", fingerprint);
 
 // the exports
 exports.fingerprint = fingerprint;

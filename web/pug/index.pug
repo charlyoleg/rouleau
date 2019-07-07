@@ -20,9 +20,9 @@ html(lang="fr")
     // The core logic
     script(type='module', src='js/rouleau_app.js?v=1.0')
     // The service-worker
-    if with_service_worker
+    if fingerprint.with_service_worker
       script.
-        if ('fingerprint.serviceWorker' in navigator) {
+        if ('serviceWorker' in navigator) {
           navigator.serviceWorker.register('./rouleau_service_worker.js')
            .then(registration => console.log('rouleau service worker installed with scope: ', registration.scope))
            .catch(err => console.error('Error by installing the rouleau service worker: ', err));
