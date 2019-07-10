@@ -3,8 +3,8 @@
 main
   nav.navigo
     a(href='#') Top
-    a(href='#one') one
-    a(href='#two') two
+    a(href='#layout-explanations') Layout
+    a(href='#a-proposal') Proposal
     a(href='#three') three
     a(href='#four') four
     a(href='#five') five
@@ -19,14 +19,28 @@ main
       aside.left_side
         include left_side.pug
     main.core
-      .water#one
+      .water#layout-explanations
         .island
-          h1 Premier truc
-          p lolo lala
-      .water#two
+          h1 The Rouleau's layout
+          h2 Explanations of the layout of this SPA
+          p Per definition and per concept a single-page-application is from the DOM point of view a single HTML page, i.e. a single DOM. When the application is running, the structure and/or the appearance of this HTML page might change drastically through the effect of the javascript code. From the user point of view it may look like several HTML pages. This confusion is reinforced if the URL routes are matching with the several faces of the applications.
+          p For Rouleau, we want to minimize the javascript overlay and stick to the default behavior of the browser. That's means that:
+          ul
+            li all sub-pages (a.k.a. faces or islands) of the application are always visible
+            li the javascript doesn't do any url-route interpretation
+            li
+              | the hashtags of the url point to the different sub-pages just by using the html attribute 
+              i id
+            li the vertical scrollbar lets you navigate through the complete application i.e. over all sub-pages
+            li the menu consists of simple html links pointing to the according hashtags
+      .water#a-proposal
         .island
-          h1 Second stuff
-          p zouzou
+          h1 A proposal
+          p Do you agree with the following proposal?
+          p "Any blue swimming trunks will be prohibited in all public baths of the country."
+          p A- I approve this proposal.
+          p B- I disapprove this proposal.
+          p C- Blank vote: I let my fellow citizen decide for me.
       .water#three
         .island
           h1 A third one
