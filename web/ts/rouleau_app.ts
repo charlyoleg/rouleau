@@ -68,3 +68,72 @@ btn_pwauninstall.addEventListener('click', (evt:Event) => {
   pwa_install_status.innerHTML = "Rouleau has been uninstalled";
 });
 
+
+// =========================
+// Layout explanation
+// =========================
+
+// html elements
+const layout_expl_back:HTMLButtonElement = document.querySelector("#layout_expl_back");
+const layout_expl_next:HTMLButtonElement = document.querySelector("#layout_expl_next");
+const layout_expl_status:HTMLElement = document.querySelector("#layout_expl_status");
+
+// Button layout_expl_back
+layout_expl_back.addEventListener('click', (evt:Event) => {
+  console.log('Click on layout_expl_back');
+  layout_expl_status.innerHTML = "T'as cliqué sur Back";
+  layout_expl_status.style.background = 'lightblue';
+  window.location.href = '#';
+});
+
+// Button layout_expl_next
+layout_expl_next.addEventListener('click', (evt:Event) => {
+  console.log('Click on layout_expl_next');
+  layout_expl_status.innerHTML = "T'as cliqué sur Next";
+  layout_expl_status.style.background = 'yellowgreen';
+  window.location.href = '#a-proposal';
+});
+
+
+// =========================
+// A proposal
+// =========================
+
+// html elements
+const prop1_reset:HTMLButtonElement = document.querySelector("#prop1_reset");
+const prop1_submit:HTMLButtonElement = document.querySelector("#prop1_submit");
+const prop1_status:HTMLElement = document.querySelector("#prop1_status");
+const prop1_result:HTMLElement = document.querySelector("#prop1_result");
+const prop1_form:HTMLElement = document.querySelector("#prop1_form");
+let prop1_choice:string = null;
+
+// Form prop1_form
+prop1_form.addEventListener('change', (evt:Event) => {
+  console.log('The form prop1_form has been changed');
+  if (prop1_choice != null) {
+    prop1_status.innerHTML = "input and output are out of sync!";
+    prop1_status.style.background = '#ff9933';
+  }
+});
+
+// Button prop1_reset
+prop1_reset.addEventListener('click', (evt:Event) => {
+  console.log('Click on prop1_reset');
+  if (prop1_choice != null) {
+    prop1_status.innerHTML = "Back to the submitted value";
+    prop1_status.style.background = 'yellowgreen';
+    //document.querySelector('input[name=radio_prop1]').value = prop1_choice;
+    document.querySelector('#prop1_' + prop1_choice).checked = true;
+  }
+});
+
+// Button prop1_submit
+prop1_submit.addEventListener('click', (evt:Event) => {
+  console.log('Click on prop1_submit');
+  prop1_status.innerHTML = "A voté!";
+  prop1_status.style.background = 'yellowgreen';
+  prop1_choice = document.querySelector('input[name=radio_prop1]:checked').value;
+  prop1_result.innerHTML = "The opinion is " + prop1_choice;
+});
+
+

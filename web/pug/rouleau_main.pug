@@ -14,7 +14,7 @@ main
     a(href='#apropos') Apropos
   main.core_columns
     aside.left_side_shutter
-      input#left_side_checkbox(type='checkbox', checked='')
+      input#left_side_checkbox(type='checkbox', checked=true)
       label.side_checkbox_label(for='left_side_checkbox')
       aside.left_side
         include left_side.pug
@@ -33,14 +33,38 @@ main
               i id
             li the vertical scrollbar lets you navigate through the complete application i.e. over all sub-pages
             li the menu consists of simple html links pointing to the according hashtags
+          .action_bar
+            .one_button
+              button#layout_expl_back.action_button(type='button') Back
+            .one_status
+              span#layout_expl_status.action_status Tuti bene
+            .one_button
+              button#layout_expl_next.action_button(type='button') Next
       .water#a-proposal
         .island
           h1 A proposal
-          p Do you agree with the following proposal?
-          p "Any blue swimming trunks will be prohibited in all public baths of the country."
-          p A- I approve this proposal.
-          p B- I disapprove this proposal.
-          p C- Blank vote: I let my fellow citizen decide for me.
+          p The last local assembly has suggested the following proposal:
+          blockquote "Any blue swimming trunks will be prohibited in all public baths of the city."
+          form#prop1_form
+            p Do you agree with the following proposal?
+            input#prop1_yes(type='radio', name='radio_prop1', value='yes')
+            label(for='prop1_yes') I approve this proposal
+            br
+            input#prop1_no(type='radio', name='radio_prop1', value='no')
+            label(for='prop1_no') I disapprove this proposal.
+            br
+            input#prop1_blank(type='radio', name='radio_prop1', value='blank', checked=true)
+            label(for='prop1_blank') Blank vote: I let my fellow citizens decide for me.
+            br
+          .action_bar
+            .one_button
+              button#prop1_reset.action_button(type='button') Reset
+            .one_status
+              span#prop1_status.action_status Vote non exprimé
+            .one_button
+              button#prop1_submit.action_button(type='button') Submit
+          .result
+            output#prop1_result L'urne est vide.
       .water#three
         .island
           h1 A third one
@@ -66,7 +90,7 @@ main
           h1 A eighth title
           p lali lala 8
     aside.right_side_shutter
-      input#right_side_checkbox(type='checkbox', checked='')
+      input#right_side_checkbox(type='checkbox', checked=true)
       label.side_checkbox_label(for='right_side_checkbox')
       aside.right_side
         include right_side.pug
