@@ -17,7 +17,7 @@ rlSub.abc();
 // html elements
 const btn_pwainstall:HTMLButtonElement = document.querySelector("#pwa_install");
 const btn_pwauninstall:HTMLButtonElement = document.querySelector("#pwa_uninstall");
-const pwa_install_status:HTMLElement = document.querySelector("#pwa_install_status");
+const pwa_install_status:HTMLSpanElement = document.querySelector("#pwa_install_status");
 
 // variable declarations
 let deferredPrompt:BeforeInstallPromptEvent;
@@ -76,7 +76,7 @@ btn_pwauninstall.addEventListener('click', (evt:Event) => {
 // html elements
 const layout_expl_back:HTMLButtonElement = document.querySelector("#layout_expl_back");
 const layout_expl_next:HTMLButtonElement = document.querySelector("#layout_expl_next");
-const layout_expl_status:HTMLElement = document.querySelector("#layout_expl_status");
+const layout_expl_status:HTMLSpanElement = document.querySelector("#layout_expl_status");
 
 // Button layout_expl_back
 layout_expl_back.addEventListener('click', (evt:Event) => {
@@ -102,9 +102,9 @@ layout_expl_next.addEventListener('click', (evt:Event) => {
 // html elements
 const prop1_reset:HTMLButtonElement = document.querySelector("#prop1_reset");
 const prop1_submit:HTMLButtonElement = document.querySelector("#prop1_submit");
-const prop1_status:HTMLElement = document.querySelector("#prop1_status");
-const prop1_result:HTMLElement = document.querySelector("#prop1_result");
-const prop1_form:HTMLElement = document.querySelector("#prop1_form");
+const prop1_status:HTMLSpanElement = document.querySelector("#prop1_status");
+const prop1_result:HTMLOutputElement = document.querySelector("#prop1_result");
+const prop1_form:HTMLFormElement = document.querySelector("#prop1_form");
 let prop1_choice:string = null;
 
 // Form prop1_form
@@ -123,7 +123,7 @@ prop1_reset.addEventListener('click', (evt:Event) => {
     prop1_status.innerHTML = "Back to the submitted value";
     prop1_status.style.background = 'yellowgreen';
     //document.querySelector('input[name=radio_prop1]').value = prop1_choice;
-    document.querySelector('#prop1_' + prop1_choice).checked = true;
+    (<HTMLInputElement>document.querySelector('#prop1_' + prop1_choice)).checked = true;
   }
 });
 
@@ -132,7 +132,7 @@ prop1_submit.addEventListener('click', (evt:Event) => {
   console.log('Click on prop1_submit');
   prop1_status.innerHTML = "A voté!";
   prop1_status.style.background = 'yellowgreen';
-  prop1_choice = document.querySelector('input[name=radio_prop1]:checked').value;
+  prop1_choice = (<HTMLInputElement>document.querySelector('input[name=radio_prop1]:checked')).value;
   prop1_result.innerHTML = "The opinion is " + prop1_choice;
 });
 
