@@ -76,21 +76,21 @@ btn_pwauninstall.addEventListener('click', (evt:Event) => {
 // html elements
 const layout_expl_back:HTMLButtonElement = document.querySelector("#layout_expl_back");
 const layout_expl_next:HTMLButtonElement = document.querySelector("#layout_expl_next");
-const layout_expl_status:HTMLSpanElement = document.querySelector("#layout_expl_status");
+//const layout_expl_status:HTMLSpanElement = document.querySelector("#layout_expl_status");
 
 // Button layout_expl_back
 layout_expl_back.addEventListener('click', (evt:Event) => {
   console.log('Click on layout_expl_back');
-  layout_expl_status.innerHTML = "T'as cliqué sur Back";
-  layout_expl_status.style.background = 'lightblue';
+  //layout_expl_status.innerHTML = "T'as cliqué sur Back";
+  //layout_expl_status.style.background = 'lightblue';
   window.location.href = '#';
 });
 
 // Button layout_expl_next
 layout_expl_next.addEventListener('click', (evt:Event) => {
   console.log('Click on layout_expl_next');
-  layout_expl_status.innerHTML = "T'as cliqué sur Next";
-  layout_expl_status.style.background = 'yellowgreen';
+  //layout_expl_status.innerHTML = "T'as cliqué sur Next";
+  //layout_expl_status.style.background = 'yellowgreen';
   window.location.href = '#a-proposal';
 });
 
