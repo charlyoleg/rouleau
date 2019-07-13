@@ -13,7 +13,7 @@
     "build_docs": "pipenv run sphinx-build -b html docs/ docs/build/",
     "view_docs": "sensible-browser docs/build/index.html",
     "the_docs": "run-s build_docs view_docs",
-    "build_docs_pdf": "pipenv run rst2pdf docs/rouleau_concept.rst",
+    "build_docs_pdf": "rst2pdf docs/rouleau_concept.rst",
     "clean_web": "rm -fr web/dist",
     "build_html": "WITH_SERVICE_WORKER=true pug -O web/pug/fingerprint.js --pretty --out web/dist/ web/pug/index.pug",
     "build_html_dev": "pug -O web/pug/fingerprint.js --pretty --out web/dist/ web/pug/index.pug",
