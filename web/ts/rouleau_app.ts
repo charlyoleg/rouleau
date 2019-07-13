@@ -83,7 +83,7 @@ layout_expl_back.addEventListener('click', (evt:Event) => {
   console.log('Click on layout_expl_back');
   //layout_expl_status.innerHTML = "T'as cliqué sur Back";
   //layout_expl_status.style.background = 'lightblue';
-  window.location.href = '#';
+  window.location.href = '#layout-explanations';
 });
 
 // Button layout_expl_next
