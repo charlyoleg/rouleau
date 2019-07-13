@@ -51,7 +51,7 @@ To upgrade your npm version, you can try::
 
 Additional requirements::
 
-  sudo apt install rst2pdf evince curl
+  sudo apt install evince curl
 
 
 Getting Started
@@ -110,5 +110,16 @@ With Now.sh:
 
 .. _now-Rouleau-instance : https://dist-qbsupg3ph.now.sh/
 .. _now-Rouleau-instance-alias : https://dist.charlyoleg.now.sh/
+
+
+Further documentation
+=====================
+
+To generate and view the documentation::
+
+  npm run install_py
+  npm run the_docs
+
+Or visit the online documentation:
 
 
