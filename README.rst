@@ -121,6 +121,11 @@ To generate and view the documentation::
   npm run install_py
   npm run the_docs
 
-Or visit the online documentation:
+Or visit the online documentation on Read-the-Docs:
 
+- ReadTheDocs-Rouleau-status_
+- ReadTheDocs-Rouleau-instance_
+
+.. _ReadTheDocs-Rouleau-status : https://readthedocs.org/projects/rouleau/
+.. _ReadTheDocs-Rouleau-instance : https://rouleau.readthedocs.io/en/latest/
 
