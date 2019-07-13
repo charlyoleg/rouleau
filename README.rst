@@ -46,7 +46,7 @@ This project requires nodejs and npm::
 
 To upgrade your npm version, you can try::
 
-  npm i -g npm
+  sudo npm i -g npm
 
 
 Additional requirements::
