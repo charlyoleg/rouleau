@@ -52,6 +52,7 @@ To upgrade your npm version, you can try::
 Additional requirements::
 
   sudo apt install rst2pdf evince curl
+  pip install --user pipenv
 
 
 Getting Started
