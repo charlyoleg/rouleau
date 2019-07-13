@@ -11,6 +11,7 @@ Welcome to rouleau's documentation!
    :caption: Contents:
 
    rouleau_concept
+   README
 
 
 
