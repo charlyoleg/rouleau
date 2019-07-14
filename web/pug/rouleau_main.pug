@@ -23,6 +23,7 @@ main
         .island
           h1 The Rouleau's layout
           h2 Explanations of the layout of this SPA
+          h3 The global layout
           p Per definition and per concept a single-page-application is from the DOM point of view a single HTML page, i.e. a single DOM. When the application is running, the structure and/or the appearance of this HTML page might change drastically through the effect of the javascript code. From the user point of view it may look like several HTML pages. This confusion is reinforced if the URL routes are matching with the several faces of the applications.
           p For Rouleau, we want to minimize the javascript overlay and stick to the default behavior of the browser. That's means that:
           ul
@@ -33,6 +34,18 @@ main
               i id
             li the vertical scrollbar lets you navigate through the complete application i.e. over all sub-pages
             li the menu consists of simple html links pointing to the according hashtags
+          h3 The island layout
+          img(src='img/island_layout.svg', alt='the island layout')
+          p The layout of an island is composed of the following elements:
+          ul
+            li a title
+            li a small introduction or explanation text
+            li a form where the user enters his choices
+            li an output field for the current selected statements
+            li a status field that shows if the input-form and output-statements are in sync
+            li a submit button that updates the output statements according to the input form
+            li a reset button that update the input form back to the current output statements
+            li an optional log field that could help for debug or a more transparent user experience
           .action_bar
             .one_button
               button#layout_expl_back.action_button(type='button') Back
