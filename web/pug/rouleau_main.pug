@@ -1,5 +1,30 @@
 //- rouleau_main.pug
 
+mixin vote_finalization
+  .final_refusal
+    label
+      input(type='checkbox', name='island_refusal')
+      |  I don't want to participate to this vote. Some hints:
+    select(name='island_refusal_details')
+      option(value='my_decision') My decision
+      option(value='wording') The wording of questions and proposal is ambiguious
+      option(value='missing_proposals') Important proposals are missing
+      option(value='indecent') It contains indecent questions or proposals
+      option(value='information') The current information on this topic is too bad
+      option(value='debat') The current debat on this topic is too bad
+      option(value='several') For several of the above reasons
+      option(value='other') For other reasons
+  .action_bar
+    .one_button
+      button.action_button(type='button') Reset
+    .one_status
+      span.action_status No submitted entries
+    .one_button
+      button.action_button(type='button') Submit
+  .result
+    output Undeclared views
+  .log
+
 main
   nav.navigo
     a(href='#') Top
@@ -48,11 +73,11 @@ main
             li an optional log field that could help for debug or a more transparent user experience
           .action_bar
             .one_button
-              button#layout_expl_back.action_button(type='button') Back
+              button.action_button(type='button') Back
             .one_status
-              span#layout_expl_status.action_status
+              span.action_status
             .one_button
-              button#layout_expl_next.action_button(type='button') Next
+              button.action_button(type='button') Next
       .water#a-proposal
         .island
           h1 A proposal
@@ -69,15 +94,7 @@ main
             input#prop1_blank(type='radio', name='radio_prop1', value='blank', checked=true)
             label(for='prop1_blank') Blank vote: I let my fellow citizens decide for me.
             br
-          .action_bar
-            .one_button
-              button#prop1_reset.action_button(type='button') Reset
-            .one_status
-              span#prop1_status.action_status Vote non exprimé
-            .one_button
-              button#prop1_submit.action_button(type='button') Submit
-          .result
-            output#prop1_result L'urne est vide.
+          +vote_finalization
       .water#a-survey
         .island
           h1 A survey
@@ -101,15 +118,8 @@ main
                 option(value='slide') slide
                 option(value='board') diving board
                 option(value='jacuzzi') jacuzzi
-          .action_bar
-            .one_button
-              button#survey1_reset.action_button(type='button') Reset
-            .one_status
-              span#survey1_status.action_status Vote non exprimé
-            .one_button
-              button#survey1_submit.action_button(type='button') Submit
-          .result
-            output#survey1_result L'urne est vide.
+                option(value='dont_care') don't care
+          +vote_finalization
       .water#four
         .island
           h1 A fourth title
