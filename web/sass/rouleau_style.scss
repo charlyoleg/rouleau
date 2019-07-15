@@ -197,7 +197,8 @@ footer h2 {
   text-align: left;
 }
 
-.action_button {
+.action_button_reset,
+.action_button_submit {
   color: #003399;
   background-color: #99ccff;
   padding: 0.5em;
@@ -210,19 +211,22 @@ footer h2 {
   box-shadow: 0 0 0.5em 0 hsl(65, 100%, 86%);
 }
 
-.action_button:hover {
+.action_button_reset:hover,
+.action_button_submit:hover {
   color: #0066cc;
   background-color: #ccccff;
   border-color: #ffcc00;
   box-shadow: 0 0 0.5em 0.2em hsl(65, 100%, 86%);
 }
 
-.action_button:active {
+.action_button_reset:active,
+.action_button_submit:active {
   color: #ffffff;
   box-shadow: 0 0 0.5em 0.5em hsl(65, 100%, 86%);
 }
 
-.action_button:disabled {
+.action_button_reset:disabled,
+.action_button_submit:disabled {
   background-color: #557788;
   border-color: #995500;
   box-shadow: none;

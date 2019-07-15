@@ -74,9 +74,9 @@ btn_pwauninstall.addEventListener('click', (evt:Event) => {
 // =========================
 
 // html elements
-const layout_expl_back:HTMLButtonElement = document.querySelector("#layout_expl_back");
-const layout_expl_next:HTMLButtonElement = document.querySelector("#layout_expl_next");
-//const layout_expl_status:HTMLSpanElement = document.querySelector("#layout_expl_status");
+const layout_expl_back:HTMLButtonElement = document.querySelector("#layout-explanations .action_button_reset");
+const layout_expl_next:HTMLButtonElement = document.querySelector("#layout-explanations .action_button_submit");
+//const layout_expl_status:HTMLSpanElement = document.querySelector("#layout-explanations .action_status");
 
 // Button layout_expl_back
 layout_expl_back.addEventListener('click', (evt:Event) => {
@@ -100,11 +100,11 @@ layout_expl_next.addEventListener('click', (evt:Event) => {
 // =========================
 
 // html elements
-const prop1_reset:HTMLButtonElement = document.querySelector("#prop1_reset");
-const prop1_submit:HTMLButtonElement = document.querySelector("#prop1_submit");
-const prop1_status:HTMLSpanElement = document.querySelector("#prop1_status");
-const prop1_result:HTMLOutputElement = document.querySelector("#prop1_result");
-const prop1_form:HTMLFormElement = document.querySelector("#prop1_form");
+const prop1_reset:HTMLButtonElement = document.querySelector("#a-proposal .action_button_reset");
+const prop1_submit:HTMLButtonElement = document.querySelector("#a-proposal .action_button_submit");
+const prop1_status:HTMLSpanElement = document.querySelector("#a-proposal .action_status");
+const prop1_result:HTMLOutputElement = document.querySelector("#a-proposal output");
+const prop1_form:HTMLFormElement = document.querySelector("#a-proposal form");
 let prop1_choice:string = null;
 
 // Form prop1_form
@@ -122,8 +122,8 @@ prop1_reset.addEventListener('click', (evt:Event) => {
   if (prop1_choice != null) {
     prop1_status.innerHTML = "Back to the submitted value";
     prop1_status.style.background = 'yellowgreen';
-    //document.querySelector('input[name=radio_prop1]').value = prop1_choice;
-    (<HTMLInputElement>document.querySelector('#prop1_' + prop1_choice)).checked = true;
+    //(<HTMLInputElement>document.querySelector('input[name=radio_prop1][value=blank]')).checked = true;
+    (<HTMLInputElement>document.querySelector('#a-proposal input[name=radio_prop1][value=' + prop1_choice + ']')).checked = true;
   }
 });
 
