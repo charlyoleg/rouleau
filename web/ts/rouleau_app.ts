@@ -105,7 +105,10 @@ const prop1_submit:HTMLButtonElement = document.querySelector("#a-proposal .acti
 const prop1_status:HTMLSpanElement = document.querySelector("#a-proposal .action_status");
 const prop1_result:HTMLOutputElement = document.querySelector("#a-proposal output");
 const prop1_form:HTMLFormElement = document.querySelector("#a-proposal form");
+const prop1_form_refusal:HTMLFormElement = document.querySelector("#a-proposal .final_refusal");
 let prop1_choice:string = null;
+let prop1_refusal:boolean = false;
+let prop1_refusal_hint:string = null;
 
 // Form prop1_form
 prop1_form.addEventListener('change', (evt:Event) => {
@@ -116,6 +119,33 @@ prop1_form.addEventListener('change', (evt:Event) => {
   }
 });
 
+// Update the enable disable
+function prop1_final_enable_disable() {
+  if ( (<HTMLInputElement>document.querySelector('#a-proposal .final_refusal input')).checked ) {
+    (<HTMLSelectElement>document.querySelector('#a-proposal .final_refusal select')).disabled = false;
+    (<HTMLFormElement>document.querySelector('#a-proposal fieldset')).disabled = true;
+  } else {
+    (<HTMLSelectElement>document.querySelector('#a-proposal .final_refusal select')).disabled = true;
+    (<HTMLFormElement>document.querySelector('#a-proposal fieldset')).disabled = false;
+  }
+}
+
+// page reload
+window.addEventListener('load', (evt:Event) => {
+  console.log('Page load event');
+  prop1_final_enable_disable();
+});
+
+// Final refusal checkbox
+prop1_form_refusal.addEventListener('change', (evt:Event) => {
+  console.log('The form prop1_form_refusal has been changed');
+  if (prop1_choice != null) {
+    prop1_status.innerHTML = "input and output are out of sync!";
+    prop1_status.style.background = '#ff9933';
+  }
+  prop1_final_enable_disable();
+});
+
 // Button prop1_reset
 prop1_reset.addEventListener('click', (evt:Event) => {
   console.log('Click on prop1_reset');
@@ -124,7 +154,10 @@ prop1_reset.addEventListener('click', (evt:Event) => {
     prop1_status.style.background = 'yellowgreen';
     //(<HTMLInputElement>document.querySelector('input[name=radio_prop1][value=blank]')).checked = true;
     (<HTMLInputElement>document.querySelector('#a-proposal input[name=radio_prop1][value=' + prop1_choice + ']')).checked = true;
+    (<HTMLInputElement>document.querySelector('#a-proposal .final_refusal input')).checked = prop1_refusal;
+    (<HTMLSelectElement>document.querySelector('#a-proposal .final_refusal select')).value = prop1_refusal_hint;
   }
+  prop1_final_enable_disable();
 });
 
 // Button prop1_submit
@@ -133,7 +166,13 @@ prop1_submit.addEventListener('click', (evt:Event) => {
   prop1_status.innerHTML = "A voté!";
   prop1_status.style.background = 'yellowgreen';
   prop1_choice = (<HTMLInputElement>document.querySelector('input[name=radio_prop1]:checked')).value;
-  prop1_result.innerHTML = "The opinion is " + prop1_choice;
+  prop1_refusal = (<HTMLInputElement>document.querySelector('#a-proposal .final_refusal input')).checked;
+  prop1_refusal_hint = (<HTMLSelectElement>document.querySelector('#a-proposal .final_refusal select')).value;
+  if (prop1_refusal) {
+    prop1_result.innerHTML = "No opinion because of " + prop1_refusal_hint;
+  } else {
+    prop1_result.innerHTML = "The opinion is " + prop1_choice;
+  }
 });
 
 

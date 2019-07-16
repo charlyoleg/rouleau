@@ -1,11 +1,11 @@
 //- rouleau_main.pug
 
 mixin vote_finalization
-  .final_refusal
+  form.final_refusal
     label
       input(type='checkbox', name='island_refusal')
       |  I don't want to participate to this vote. Some hints:
-    select(name='island_refusal_details')
+    select(name='island_refusal_details' disabled)
       option(value='my_decision') My decision
       option(value='wording') The wording of questions and proposal is ambiguious
       option(value='missing_proposals') Important proposals are missing
@@ -84,19 +84,20 @@ main
           p The last local assembly has suggested the following proposal:
           blockquote "Any blue swimming trunks will be prohibited in all public baths of the city."
           form
-            p Do you agree with the following proposal?
-            label
-              input(type='radio', name='radio_prop1', value='yes')
-              |  I approve this proposal
-              br
-            label
-              input(type='radio', name='radio_prop1', value='no')
-              |  I disapprove this proposal.
-              br
-            label
-              input(type='radio', name='radio_prop1', value='blank', checked=true)
-              |  Blank vote: I let my fellow citizens decide for me.
-              br
+            fieldset
+              p Do you agree with the following proposal?
+              label
+                input(type='radio', name='radio_prop1', value='yes')
+                |  I approve this proposal
+                br
+              label
+                input(type='radio', name='radio_prop1', value='no')
+                |  I disapprove this proposal.
+                br
+              label
+                input(type='radio', name='radio_prop1', value='blank', checked=true)
+                |  Blank vote: I let my fellow citizens decide for me.
+                br
           +vote_finalization
       .water#a-survey
         .island
