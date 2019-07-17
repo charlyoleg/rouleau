@@ -96,83 +96,124 @@ layout_expl_next.addEventListener('click', (evt:Event) => {
 
 
 // =========================
+// Generic vote island
+// =========================
+
+abstract class VoteIsland {
+  island_id: string;
+  island_refusal: boolean;
+  island_refusal_hint: string;
+  island: HTMLDivElement;
+  the_form: HTMLFormElement;
+  the_fieldset: HTMLFormElement
+  the_form_refusal: HTMLFormElement;
+  checkbox_refusal: HTMLInputElement;
+  hint_refusal: HTMLSelectElement;
+  button_reset: HTMLButtonElement;
+  field_status: HTMLSpanElement;
+  button_submit: HTMLButtonElement;
+  field_result: HTMLOutputElement;
+  one_submit: boolean;
+
+  constructor(a_island_id: string){
+    // the island name
+    this.island_id = a_island_id;
+    // Html element
+    this.island = document.querySelector(this.island_id);
+    this.the_form = this.island.querySelector('form');
+    this.the_fieldset = this.island.querySelector('form fieldset');
+    this.the_form_refusal = this.island.querySelector('.final_refusal');
+    this.checkbox_refusal = this.island.querySelector('.final_refusal input');
+    this.hint_refusal = this.island.querySelector('.final_refusal select');
+    this.button_reset = this.island.querySelector('.action_button_reset');
+    this.field_status = this.island.querySelector('.action_status');
+    this.button_submit = this.island.querySelector('.action_button_submit');
+    this.field_result = this.island.querySelector('output');
+    // At the beginning no vote
+    this.one_submit = false;
+    // Listeners
+    window.addEventListener('load', (evt:Event) => {
+      console.log('Page load event of island ' + this.island_id);
+      this.apply_disable();
+    });
+    this.the_form.addEventListener('change', (evt:Event) => {
+      console.log('in island ' + this.island_id + ', the form has been changed');
+      this.apply_status_input_change();
+    });
+    this.the_form_refusal.addEventListener('change', (evt:Event) => {
+      console.log('in island ' + this.island_id + ', the form_refusal has been changed');
+      this.apply_status_input_change();
+      this.apply_disable();
+    });
+    this.button_reset.addEventListener('click', (evt:Event) => {
+      console.log('Click on button_reset in  island ' + this.island_id);
+      if (this.one_submit) {
+        this.field_status.innerHTML = "Back to the submitted value";
+        this.field_status.style.background = 'yellowgreen';
+        this.checkbox_refusal.checked = this.island_refusal;
+        this.hint_refusal.value = this.island_refusal_hint;
+        this.write_the_form();
+      }
+      this.apply_disable();
+    });
+    this.button_submit.addEventListener('click', (evt:Event) => {
+      console.log('Click on button_submit in island ' + this.island_id);
+      this.field_status.innerHTML = "A voté!";
+      this.field_status.style.background = 'yellowgreen';
+      this.island_refusal = this.checkbox_refusal.checked;
+      this.island_refusal_hint = this.hint_refusal.value;
+      this.read_the_form();
+      if (this.island_refusal) {
+        this.field_result.innerHTML = "No opinion because of " + this.island_refusal_hint;
+      } else {
+        this.field_result.innerHTML = this.output_message();
+      }
+      this.one_submit = true;
+    });
+  }
+
+  apply_disable(){
+    if(this.checkbox_refusal.checked){
+      this.the_fieldset.disabled = true;
+      this.hint_refusal.disabled = false;
+    } else {
+      this.the_fieldset.disabled = false;
+      this.hint_refusal.disabled = true;
+    }
+  }
+
+  apply_status_input_change(){
+    if (this.one_submit) {
+      this.field_status.innerHTML = "input and output are out of sync!";
+      this.field_status.style.background = '#ff9933';
+    }
+  }
+
+  abstract read_the_form(): void;
+  abstract write_the_form(): void;
+  abstract output_message(): string;
+}
+
+// =========================
 // A proposal
 // =========================
 
-// html elements
-const prop1_reset:HTMLButtonElement = document.querySelector("#a-proposal .action_button_reset");
-const prop1_submit:HTMLButtonElement = document.querySelector("#a-proposal .action_button_submit");
-const prop1_status:HTMLSpanElement = document.querySelector("#a-proposal .action_status");
-const prop1_result:HTMLOutputElement = document.querySelector("#a-proposal output");
-const prop1_form:HTMLFormElement = document.querySelector("#a-proposal form");
-const prop1_form_refusal:HTMLFormElement = document.querySelector("#a-proposal .final_refusal");
-let prop1_choice:string = null;
-let prop1_refusal:boolean = false;
-let prop1_refusal_hint:string = null;
+class Aproposal extends VoteIsland {
+  choice: string;
 
-// Form prop1_form
-prop1_form.addEventListener('change', (evt:Event) => {
-  console.log('The form prop1_form has been changed');
-  if (prop1_choice != null) {
-    prop1_status.innerHTML = "input and output are out of sync!";
-    prop1_status.style.background = '#ff9933';
+  read_the_form(){
+    this.choice = (<HTMLInputElement>this.island.querySelector('input[name=radio_prop1]:checked')).value;
   }
-});
 
-// Update the enable disable
-function prop1_final_enable_disable() {
-  if ( (<HTMLInputElement>document.querySelector('#a-proposal .final_refusal input')).checked ) {
-    (<HTMLSelectElement>document.querySelector('#a-proposal .final_refusal select')).disabled = false;
-    (<HTMLFormElement>document.querySelector('#a-proposal fieldset')).disabled = true;
-  } else {
-    (<HTMLSelectElement>document.querySelector('#a-proposal .final_refusal select')).disabled = true;
-    (<HTMLFormElement>document.querySelector('#a-proposal fieldset')).disabled = false;
+  write_the_form(){
+    (<HTMLInputElement>this.island.querySelector('input[name=radio_prop1][value=' + this.choice + ']')).checked = true;
+  }
+
+  output_message(): string {
+    return 'The opinion is ' + this.choice;
   }
 }
 
-// page reload
-window.addEventListener('load', (evt:Event) => {
-  console.log('Page load event');
-  prop1_final_enable_disable();
-});
-
-// Final refusal checkbox
-prop1_form_refusal.addEventListener('change', (evt:Event) => {
-  console.log('The form prop1_form_refusal has been changed');
-  if (prop1_choice != null) {
-    prop1_status.innerHTML = "input and output are out of sync!";
-    prop1_status.style.background = '#ff9933';
-  }
-  prop1_final_enable_disable();
-});
-
-// Button prop1_reset
-prop1_reset.addEventListener('click', (evt:Event) => {
-  console.log('Click on prop1_reset');
-  if (prop1_choice != null) {
-    prop1_status.innerHTML = "Back to the submitted value";
-    prop1_status.style.background = 'yellowgreen';
-    //(<HTMLInputElement>document.querySelector('input[name=radio_prop1][value=blank]')).checked = true;
-    (<HTMLInputElement>document.querySelector('#a-proposal input[name=radio_prop1][value=' + prop1_choice + ']')).checked = true;
-    (<HTMLInputElement>document.querySelector('#a-proposal .final_refusal input')).checked = prop1_refusal;
-    (<HTMLSelectElement>document.querySelector('#a-proposal .final_refusal select')).value = prop1_refusal_hint;
-  }
-  prop1_final_enable_disable();
-});
-
-// Button prop1_submit
-prop1_submit.addEventListener('click', (evt:Event) => {
-  console.log('Click on prop1_submit');
-  prop1_status.innerHTML = "A voté!";
-  prop1_status.style.background = 'yellowgreen';
-  prop1_choice = (<HTMLInputElement>document.querySelector('input[name=radio_prop1]:checked')).value;
-  prop1_refusal = (<HTMLInputElement>document.querySelector('#a-proposal .final_refusal input')).checked;
-  prop1_refusal_hint = (<HTMLSelectElement>document.querySelector('#a-proposal .final_refusal select')).value;
-  if (prop1_refusal) {
-    prop1_result.innerHTML = "No opinion because of " + prop1_refusal_hint;
-  } else {
-    prop1_result.innerHTML = "The opinion is " + prop1_choice;
-  }
-});
+const a_proposal = new Aproposal('#a-proposal');
 
 
