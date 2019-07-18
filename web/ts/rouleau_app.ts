@@ -100,22 +100,22 @@ layout_expl_next.addEventListener('click', (evt:Event) => {
 // =========================
 
 abstract class AbstractVoteIsland {
-  island_id: string;
-  island_refusal: boolean;
-  island_refusal_hint: string;
-  island: HTMLDivElement;
-  the_form: HTMLFormElement;
-  the_fieldset: HTMLFormElement
-  the_form_refusal: HTMLFormElement;
-  checkbox_refusal: HTMLInputElement;
-  hint_refusal: HTMLSelectElement;
-  button_reset: HTMLButtonElement;
-  field_status: HTMLSpanElement;
-  button_submit: HTMLButtonElement;
-  field_result: HTMLOutputElement;
-  one_submit: boolean;
-  form_ok: boolean;
-  form_check_message: string;
+  private island_id: string;
+  private island_refusal: boolean;
+  private island_refusal_hint: string;
+  protected island: HTMLDivElement;
+  private the_form: HTMLFormElement;
+  private the_fieldset: HTMLFormElement
+  private the_form_refusal: HTMLFormElement;
+  private checkbox_refusal: HTMLInputElement;
+  private hint_refusal: HTMLSelectElement;
+  private button_reset: HTMLButtonElement;
+  private field_status: HTMLSpanElement;
+  private button_submit: HTMLButtonElement;
+  private field_result: HTMLOutputElement;
+  private one_submit: boolean;
+  private form_ok: boolean;
+  protected form_check_message: string;
 
   constructor(a_island_id: string){
     // the island name
