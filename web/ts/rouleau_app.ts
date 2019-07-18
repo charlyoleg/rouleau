@@ -96,10 +96,10 @@ layout_expl_next.addEventListener('click', (evt:Event) => {
 
 
 // =========================
-// Generic vote island
+// The Generic Vote island
 // =========================
 
-abstract class VoteIsland {
+abstract class AbstractVoteIsland {
   island_id: string;
   island_refusal: boolean;
   island_refusal_hint: string;
@@ -163,13 +163,22 @@ abstract class VoteIsland {
       this.island_refusal = this.checkbox_refusal.checked;
       this.island_refusal_hint = this.hint_refusal.value;
       this.read_the_form();
-      if (this.island_refusal) {
-        this.field_result.innerHTML = "No opinion because of " + this.island_refusal_hint;
-      } else {
-        this.field_result.innerHTML = this.output_message();
-      }
       this.one_submit = true;
+      this.field_result.innerHTML = this.get_result();
     });
+  }
+
+  get_result(): string {
+    let r_result: string;
+    r_result = "Any opinion hasn't been expressed yet!";
+    if (this.one_submit) {
+      if (this.island_refusal) {
+        r_result = "No opinion because of " + this.island_refusal_hint;
+      } else {
+        r_result = this.output_message();
+      }
+    }
+    return r_result;
   }
 
   apply_disable(){
@@ -198,7 +207,7 @@ abstract class VoteIsland {
 // A proposal
 // =========================
 
-class Aproposal extends VoteIsland {
+class Aproposal extends AbstractVoteIsland {
   choice: string;
 
   read_the_form(){
