@@ -30,7 +30,7 @@ main
     a(href='#') Top
     a(href='#layout-explanations') Layout
     a(href='#a-proposal') Proposal
-    a(href='#a-survey') Survey
+    a(href='#survey-1') Survey-1
     a(href='#four') four
     a(href='#five') five
     a(href='#six') six
@@ -99,30 +99,31 @@ main
                 |  Blank vote: I let my fellow citizens decide for me.
                 br
           +vote_finalization
-      .water#a-survey
+      .water#survey-1
         .island
-          h1 A survey
+          h1 First survey
           p What are your preferences regarding the public baths of the city?
           form
-            p The shape of the pool should be
-              select(name='survey1_dropdown1')
-                option(value='triangle') triangle
-                option(value='round') round
-                option(value='square') square
-                option(value='rectangle') rectangle
-            p Your favorite pool configuration is
-              select(name='survey1_dropdown2')
-                option(value='i3e0') 3 internal pools
-                option(value='i2e1') 2 internal pools and 1 external pool
-                option(value='i2e2') 2 internal and 2 external pools
-                option(value='i0e3') 3 external pools
-                option(value='i0e0') not relevant for me
-            p Your preferred equipement
-              select(name='survey1_dropdown3')
-                option(value='slide') slide
-                option(value='board') diving board
-                option(value='jacuzzi') jacuzzi
-                option(value='dont_care') don't care
+            fieldset
+              p The shape of the pool should be
+                select(name='survey1_dropdown1')
+                  option(value='triangle') triangle
+                  option(value='round') round
+                  option(value='square') square
+                  option(value='rectangle') rectangle
+              p Your favorite pool configuration is
+                select(name='survey1_dropdown2')
+                  option(value='i3e0') 3 internal pools
+                  option(value='i2e1') 2 internal pools and 1 external pool
+                  option(value='i2e2') 2 internal and 2 external pools
+                  option(value='i0e3') 3 external pools
+                  option(value='i0e0') not relevant for me
+              p Your preferred equipment
+                select(name='survey1_dropdown3')
+                  option(value='slide') slide
+                  option(value='board') diving board
+                  option(value='jacuzzi') jacuzzi
+                  option(value='dont_care') don't care
           +vote_finalization
       .water#four
         .island

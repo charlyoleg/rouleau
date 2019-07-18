@@ -219,6 +219,7 @@ abstract class AbstractVoteIsland {
   abstract output_message(): string;
 }
 
+
 // =========================
 // A proposal
 // =========================
@@ -249,5 +250,50 @@ class Aproposal extends AbstractVoteIsland {
 }
 
 const a_proposal = new Aproposal('#a-proposal');
+
+
+// =========================
+// First survey
+// =========================
+
+class FirstSurvey extends AbstractVoteIsland {
+  shape: string; pre_shape: string;
+  configuration: string; pre_configuration: string;
+  equipment: string; pre_equipment: string;
+
+  apply_disables_on_form() {
+  }
+
+  check_the_form(): boolean {
+    this.pre_shape = (<HTMLSelectElement>this.island.querySelector('select[name=survey1_dropdown1]')).value;
+    this.pre_configuration = (<HTMLSelectElement>this.island.querySelector('select[name=survey1_dropdown2]')).value;
+    this.pre_equipment = (<HTMLSelectElement>this.island.querySelector('select[name=survey1_dropdown3]')).value;
+    this.form_check_message = 'rien a declarer';
+    return true;
+  }
+
+  accept_the_form(){
+    this.shape = this.pre_shape;
+    this.configuration = this.pre_configuration;
+    this.equipment = this.pre_equipment;
+  }
+
+  write_the_form(){
+    (<HTMLSelectElement>this.island.querySelector('select[name=survey1_dropdown1]')).value = this.shape;
+    (<HTMLSelectElement>this.island.querySelector('select[name=survey1_dropdown2]')).value = this.configuration;
+    (<HTMLSelectElement>this.island.querySelector('select[name=survey1_dropdown3]')).value = this.equipment;
+  }
+
+  output_message(): string {
+    let r_str: string;
+    r_str = 'The opinion is:<br>';
+    r_str += '- shape: ' + this.shape + '<br>';
+    r_str += '- configuration: ' + this.configuration + '<br>';
+    r_str += '- equipment: ' + this.equipment;
+    return r_str;
+  }
+}
+
+const first_survey = new FirstSurvey('#survey-1');
 
 
