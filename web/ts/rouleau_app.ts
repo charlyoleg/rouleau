@@ -114,6 +114,8 @@ abstract class AbstractVoteIsland {
   button_submit: HTMLButtonElement;
   field_result: HTMLOutputElement;
   one_submit: boolean;
+  form_ok: boolean;
+  form_check_message: string;
 
   constructor(a_island_id: string){
     // the island name
@@ -131,6 +133,7 @@ abstract class AbstractVoteIsland {
     this.field_result = this.island.querySelector('output');
     // At the beginning no vote
     this.one_submit = false;
+    this.form_ok = false;
     // Listeners
     window.addEventListener('load', (evt:Event) => {
       console.log('Page load event of island ' + this.island_id);
@@ -138,6 +141,7 @@ abstract class AbstractVoteIsland {
     });
     this.the_form.addEventListener('change', (evt:Event) => {
       console.log('in island ' + this.island_id + ', the form has been changed');
+      this.apply_disables_on_form();
       this.apply_status_input_change();
     });
     this.the_form_refusal.addEventListener('change', (evt:Event) => {
@@ -152,19 +156,29 @@ abstract class AbstractVoteIsland {
         this.field_status.style.background = 'yellowgreen';
         this.checkbox_refusal.checked = this.island_refusal;
         this.hint_refusal.value = this.island_refusal_hint;
-        this.write_the_form();
+        if (this.form_ok) {
+          this.write_the_form();
+        }
       }
       this.apply_disable();
     });
     this.button_submit.addEventListener('click', (evt:Event) => {
       console.log('Click on button_submit in island ' + this.island_id);
-      this.field_status.innerHTML = "A voté!";
-      this.field_status.style.background = 'yellowgreen';
       this.island_refusal = this.checkbox_refusal.checked;
       this.island_refusal_hint = this.hint_refusal.value;
-      this.read_the_form();
-      this.one_submit = true;
-      this.field_result.innerHTML = this.get_result();
+      this.form_ok = this.check_the_form();
+      if ( this.island_refusal || this.form_ok ) {
+        this.field_status.innerHTML = "A voté!";
+        this.field_status.style.background = 'yellowgreen';
+        if (this.form_ok) {
+          this.accept_the_form();
+        }
+        this.one_submit = true;
+        this.field_result.innerHTML = this.get_result();
+      } else {
+        this.field_status.innerHTML = 'No submission: ' + this.form_check_message;
+        this.field_status.style.background = '#ff9933';
+      }
     });
   }
 
@@ -198,7 +212,9 @@ abstract class AbstractVoteIsland {
     }
   }
 
-  abstract read_the_form(): void;
+  abstract apply_disables_on_form(): void;
+  abstract check_the_form(): boolean;
+  abstract accept_the_form(): void;
   abstract write_the_form(): void;
   abstract output_message(): string;
 }
@@ -208,10 +224,19 @@ abstract class AbstractVoteIsland {
 // =========================
 
 class Aproposal extends AbstractVoteIsland {
-  choice: string;
+  choice: string; pre_choice: string;
 
-  read_the_form(){
-    this.choice = (<HTMLInputElement>this.island.querySelector('input[name=radio_prop1]:checked')).value;
+  apply_disables_on_form() {
+  }
+  
+  check_the_form(): boolean {
+    this.pre_choice = (<HTMLInputElement>this.island.querySelector('input[name=radio_prop1]:checked')).value;
+    this.form_check_message = 'rien a declarer';
+    return true;
+  }
+
+  accept_the_form(){
+    this.choice = this.pre_choice;
   }
 
   write_the_form(){
