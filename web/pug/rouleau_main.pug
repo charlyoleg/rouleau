@@ -1,11 +1,11 @@
 //- rouleau_main.pug
 
-mixin vote_finalization
-  form.final_refusal
+mixin a_refusal(name, msg)
+  form(class= name)
     label
-      input(type='checkbox', name='island_refusal')
-      |  I don't want to participate to this vote. Some hints:
-    select(name='island_refusal_details')
+      input(type='checkbox', name= name)
+      = msg
+    select(name= name)
       option(value='my_decision') My decision
       option(value='wording') The wording of questions and proposal is ambiguious
       option(value='missing_proposals') Important proposals are missing
@@ -14,6 +14,9 @@ mixin vote_finalization
       option(value='debat') The current debat on this topic is too bad
       option(value='several') For several of the above reasons
       option(value='other') For other reasons
+
+mixin final_action
+  +a_refusal('final_refusal', "I don't want to participate to this vote. Some hints:")
   .action_bar
     .one_button
       button.action_button_reset(type='button') Reset
@@ -24,6 +27,18 @@ mixin vote_finalization
   .result
     output Undeclared views
   .log
+
+mixin majority_judgment(name)
+  select(name= name)
+    option(value='excellent') excellent (4)
+    option(value='very-good') very good (3)
+    option(value='good') good (2)
+    option(value='passable') passabe (1)
+    option(value='don-t-care') don't care (0)
+    option(value='bad') bad (-2)
+    option(value='very-bad') very bad (-4)
+    option(value='don-t-know') don't know (?)
+    option(value='indecent') indecent (-99)
 
 main
   nav.navigo
@@ -48,6 +63,7 @@ main
       aside.left_side
         include left_side.pug
     main.core
+
       .water#layout-explanations
         .island
           h1 The Rouleau's layout
@@ -82,6 +98,7 @@ main
               span.action_status
             .one_button
               button.action_button_submit(type='button') Next
+
       .water#a-proposal
         .island
           h1 A proposal
@@ -102,7 +119,8 @@ main
                 input(type='radio', name='radio_prop1', value='blank', checked=true)
                 |  Blank vote: I let my fellow citizens decide for me.
                 br
-          +vote_finalization
+          +final_action
+
       .water#survey-1
         .island
           h1 First survey
@@ -128,43 +146,116 @@ main
                   option(value='board') diving board
                   option(value='jacuzzi') jacuzzi
                   option(value='dont_care') don't care
-          +vote_finalization
+          +final_action
+
       .water#survey-2
         .island
           h1 Second survey
-          p lali lala
+          p Which game would you like to play?
+          form
+            fieldset
+              p football
+                +majority_judgment('football')
+              p pétanque
+                +majority_judgment('petanque')
+              p belote
+                +majority_judgment('belote')
+              p marelle
+                +majority_judgment('marelle')
+              p uno
+                +majority_judgment('uno')
+          +final_action
+
       .water#survey-3
         .island
           h1 Third survey
-          p lali lala 5
+          p What are your preferences regarding the public baths of the city?
+          | Same questions as the first survey but in an other format.
+          form
+            fieldset
+              p How should be the shape of the pool?
+              fieldset.question1
+                p triangle
+                  +majority_judgment('shape_triangle')
+                p round
+                  +majority_judgment('shape_round')
+                p square
+                  +majority_judgment('shape_square')
+                p rectangle
+                  +majority_judgment('shape_rectangle')
+              +a_refusal('question1_refusal', "I don't want to vote to this question. Hints:")
+              p How will be the configuration of the pools?
+              fieldset.question2
+                p 3 internal pools
+                  +majority_judgment('conf_3i0e')
+                p 2 internal pools and 1 external pool
+                  +majority_judgment('conf_2i1e')
+                p 2 internal and 2 external pools
+                  +majority_judgment('conf_2i2e')
+                p 3 external pools
+                  +majority_judgment('conf_3e')
+                p not relevant for me
+                  +majority_judgment('conf_dontcare')
+              +a_refusal('question2_refusal', "I don't want to vote to this question. Hints:")
+              p Which equipment do you want?
+              fieldset.question3
+                p slide
+                  +majority_judgment('equip_slide')
+                p diving board
+                  +majority_judgment('equip_board')
+                p jacuzzi
+                  +majority_judgment('equip_jacuzzi')
+                p don't care
+                  +majority_judgment('equip_dontcare')
+              +a_refusal('question3_refusal', "I don't want to vote to this question. Hints:")
+          +final_action
+
       .water#proposal-preparation
         .island
           h1 The preparation of a proposal
-          p lali lala 6
+          p What will be the exact wording of the proposal?
+          form
+            fieldset
+              p "Any blue swimming trunks will be prohibited in all public baths of the city."
+                +majority_judgment('prop1')
+              p "Any blue swimming trunks will be prohibited in one public baths of the city."
+                +majority_judgment('prop2')
+              p "Any blue swimming trunks will be prohibited in all public sona of the city."
+                +majority_judgment('prop3')
+              p "Any dark blue swimming trunks will be prohibited in all public baths of the city."
+                +majority_judgment('prop4')
+          +final_action
+
       .water#importance
         .island
           h1 An importance list
           p lali lala 7
+
       .water#priority
         .island
           h1 A priority list
           p lali lala 8
+
       .water#budget
         .island
           h1 Orientations budgétaires
           p lali lala 8
+
       .water#points
         .island
           h1 Le vote à points
           p lali lala 8
+
       .water#rest-js
         .island
           h1 Playing with the Rest-js server
           p lali lala 8
+
       .water#rest-py
         .island
           h1 Playing with the Rest-py server
           p lali lala 8
+
     aside.right_side_shutter
       input#right_side_checkbox(type='checkbox', checked=true)
       label.side_checkbox_label(for='right_side_checkbox')
