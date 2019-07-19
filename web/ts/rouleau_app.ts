@@ -9,6 +9,53 @@ import * as rlSub from './rouleau_sub.js';
 console.log("Hello from rouleau_app.ts");
 rlSub.abc();
 
+// =========================
+// Messages and colors
+// =========================
+
+interface Messages {
+  pwaStatus_installed : string;
+  pwaStatus_afterInstallation : string;
+  pwaStatus_afterUninstallation : string;
+  layoutExplanationStatus_clickBack : string;
+  layoutExplanationStatus_clickNext : string;
+  voteStatus_reset : string;
+  voteStatus_submit : string;
+  voteStatus_invalidSubmit : string;
+  voteStatus_outOfSync : string;
+}
+
+let messagesEn : Messages = {
+  pwaStatus_installed : "Rouleau is installed on your device",
+  pwaStatus_afterInstallation : "Rouleau has been installed",
+  pwaStatus_afterUninstallation : "Rouleau has been uninstalled",
+  layoutExplanationStatus_clickBack : "T'as cliqué sur Back",
+  layoutExplanationStatus_clickNext : "T'as cliqué sur Next",
+  voteStatus_reset : "Back to the submitted value",
+  voteStatus_submit : "Vote cast!",
+  voteStatus_invalidSubmit : "No submission: ",
+  voteStatus_outOfSync : "input and output are out of sync!"
+};
+
+// select your language
+let messages : Messages = messagesEn;
+
+interface Colors {
+  pwaStatus_afterInstallation : string;
+  layoutExplanationStatus_clickBack : string;
+  layoutExplanationStatus_clickNext : string;
+  voteStatus_ok : string;
+  voteStatus_nok : string;
+}
+
+let colors : Colors = {
+  pwaStatus_afterInstallation : 'green',
+  layoutExplanationStatus_clickBack : 'lightblue',
+  layoutExplanationStatus_clickNext : 'yellowgreen',
+  voteStatus_ok : 'yellowgreen',
+  voteStatus_nok : '#ff9933'
+};
+
 
 // =========================
 // PWA installation
@@ -37,8 +84,8 @@ window.addEventListener('beforeinstallprompt', (evt:BeforeInstallPromptEvent) =>
 // check is the pwa has been installed
 window.addEventListener('appinstalled', (evt:Event) => {
   console.log('a2hs installed');
-  pwa_install_status.innerHTML = "Rouleau is installed on your device";
-  pwa_install_status.style.background = 'green';
+  pwa_install_status.innerHTML = messages.pwaStatus_installed;
+  pwa_install_status.style.background = colors.pwaStatus_afterInstallation;
 });
 
 // Button to install the app
@@ -58,14 +105,14 @@ btn_pwainstall.addEventListener('click', (evt:Event) => {
       }
       deferredPrompt = null;
     });
-  pwa_install_status.innerHTML = "Rouleau has been installed";
+  pwa_install_status.innerHTML = messages.pwaStatus_afterInstallation;
 });
 
 // Button to uninstall the app
 btn_pwauninstall.addEventListener('click', (evt:Event) => {
   console.log('Click on btn_pwauninstall');
   console.log('Nothing done! Uninstall is not implemented!');
-  pwa_install_status.innerHTML = "Rouleau has been uninstalled";
+  pwa_install_status.innerHTML = messages.pwaStatus_afterUninstallation;
 });
 
 
@@ -81,16 +128,16 @@ const layout_expl_next:HTMLButtonElement = document.querySelector("#layout-expla
 // Button layout_expl_back
 layout_expl_back.addEventListener('click', (evt:Event) => {
   console.log('Click on layout_expl_back');
-  //layout_expl_status.innerHTML = "T'as cliqué sur Back";
-  //layout_expl_status.style.background = 'lightblue';
+  //layout_expl_status.innerHTML = messages.layoutExplanationStatus_clickBack;
+  //layout_expl_status.style.background = colors.layoutExplanationStatus_clickBack;
   window.location.href = '#layout-explanations';
 });
 
 // Button layout_expl_next
 layout_expl_next.addEventListener('click', (evt:Event) => {
   console.log('Click on layout_expl_next');
-  //layout_expl_status.innerHTML = "T'as cliqué sur Next";
-  //layout_expl_status.style.background = 'yellowgreen';
+  //layout_expl_status.innerHTML = messages.layoutExplanationStatus_clickNext;
+  //layout_expl_status.style.background = colors.layoutExplanationStatus_clickNext;
   window.location.href = '#a-proposal';
 });
 
@@ -152,8 +199,8 @@ abstract class AbstractVoteIsland {
     this.button_reset.addEventListener('click', (evt:Event) => {
       console.log('Click on button_reset in  island ' + this.island_id);
       if (this.one_submit) {
-        this.field_status.innerHTML = "Back to the submitted value";
-        this.field_status.style.background = 'yellowgreen';
+        this.field_status.innerHTML = messages.voteStatus_reset;
+        this.field_status.style.background = colors.voteStatus_ok;
         this.checkbox_refusal.checked = this.island_refusal;
         this.hint_refusal.value = this.island_refusal_hint;
         if (this.form_ok) {
@@ -168,16 +215,16 @@ abstract class AbstractVoteIsland {
       this.island_refusal_hint = this.hint_refusal.value;
       this.form_ok = this.check_the_form();
       if ( this.island_refusal || this.form_ok ) {
-        this.field_status.innerHTML = "A voté!";
-        this.field_status.style.background = 'yellowgreen';
+        this.field_status.innerHTML = messages.voteStatus_submit;
+        this.field_status.style.background = colors.voteStatus_ok;
         if (this.form_ok) {
           this.accept_the_form();
         }
         this.one_submit = true;
         this.field_result.innerHTML = this.get_result();
       } else {
-        this.field_status.innerHTML = 'No submission: ' + this.form_check_message;
-        this.field_status.style.background = '#ff9933';
+        this.field_status.innerHTML = messages.voteStatus_invalidSubmit + this.form_check_message;
+        this.field_status.style.background = colors.voteStatus_nok;
       }
     });
   }
@@ -207,8 +254,8 @@ abstract class AbstractVoteIsland {
 
   apply_status_input_change(){
     if (this.one_submit) {
-      this.field_status.innerHTML = "input and output are out of sync!";
-      this.field_status.style.background = '#ff9933';
+      this.field_status.innerHTML = messages.voteStatus_outOfSync;
+      this.field_status.style.background = colors.voteStatus_nok;
     }
   }
 
