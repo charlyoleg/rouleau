@@ -184,6 +184,7 @@ abstract class AbstractVoteIsland {
     // Listeners
     window.addEventListener('load', (evt:Event) => {
       console.log('Page load event of island ' + this.island_id);
+      this.apply_disables_on_form();
       this.apply_disable();
     });
     this.the_form.addEventListener('change', (evt:Event) => {
@@ -207,6 +208,7 @@ abstract class AbstractVoteIsland {
           this.write_the_form();
         }
       }
+      this.apply_disables_on_form();
       this.apply_disable();
     });
     this.button_submit.addEventListener('click', (evt:Event) => {
@@ -443,5 +445,13 @@ const c_ThirdSurvey_respIds : Array<string> = [
   'equip_slide', 'equip_board', 'equip_jacuzzi', 'equip_dontcare'];
 
 const third_survey = new ThirdSurvey('#survey-3', c_ThirdSurvey_respIds, c_ThirdSurvey_questIds);
+
+
+// =========================
+// Proposal Preparation
+// =========================
+
+const c_ProposalPreparation_respIds : Array<string> = ['prop1', 'prop2', 'prop3', 'prop4'];
+const proposal_preparation = new SecondSurvey('#proposal-preparation', c_ProposalPreparation_respIds);
 
 
