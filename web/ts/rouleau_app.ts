@@ -344,3 +344,60 @@ class FirstSurvey extends AbstractVoteIsland {
 const first_survey = new FirstSurvey('#survey-1');
 
 
+// =========================
+// Second survey
+// =========================
+
+class SecondSurvey extends AbstractVoteIsland {
+  respIds : Array<string> = [];
+  response: Array<string> = [];
+  pre_response: Array<string> = [];
+
+  constructor (a_island_id : string, a_ids : Array<string>) {
+    super(a_island_id);
+    for (let i in a_ids) {
+      //console.log(i, a_ids[i]);
+      this.respIds.push(a_ids[i]);
+      this.response.push('zero');
+      this.pre_response.push('zero');
+    }
+  }
+
+  apply_disables_on_form() {
+  }
+
+  check_the_form(): boolean {
+    for (let id in this.respIds) {
+      this.pre_response[id] = (<HTMLSelectElement>this.island.querySelector('select[name=' + this.respIds[id] + ']')).value;
+        //console.log(id, this.pre_response[id]);
+    }
+    this.form_check_message = 'rien a declarer';
+    return true;
+  }
+
+  accept_the_form(){
+    for (let id in this.respIds) {
+      this.response[id] = this.pre_response[id];
+    }
+  }
+
+  write_the_form(){
+    for (let id in this.respIds) {
+      (<HTMLSelectElement>this.island.querySelector('select[name=' + this.respIds[id] + ']')).value = this.response[id];
+    }
+  }
+
+  output_message(): string {
+    let r_str: string;
+    r_str = 'The opinion is:<br>';
+    for (let id in this.respIds) {
+      r_str += '- ' + this.respIds[id] + ': ' + this.response[id] + '<br>';
+    }
+    return r_str;
+  }
+}
+
+const c_respIds : Array<string> = ['football', 'petanque', 'belote', 'marelle', 'uno'];
+const second_survey = new SecondSurvey('#survey-2', c_respIds);
+
+
