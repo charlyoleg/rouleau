@@ -349,9 +349,9 @@ const first_survey = new FirstSurvey('#survey-1');
 // =========================
 
 class SecondSurvey extends AbstractVoteIsland {
-  respIds : Array<string> = [];
-  response: Array<string> = [];
-  pre_response: Array<string> = [];
+  private respIds : Array<string> = [];
+  private response: Array<string> = [];
+  private pre_response: Array<string> = [];
 
   constructor (a_island_id : string, a_ids : Array<string>) {
     super(a_island_id);
@@ -397,7 +397,51 @@ class SecondSurvey extends AbstractVoteIsland {
   }
 }
 
-const c_respIds : Array<string> = ['football', 'petanque', 'belote', 'marelle', 'uno'];
-const second_survey = new SecondSurvey('#survey-2', c_respIds);
+const c_SecondSurvey_respIds : Array<string> = ['football', 'petanque', 'belote', 'marelle', 'uno'];
+const second_survey = new SecondSurvey('#survey-2', c_SecondSurvey_respIds);
+
+
+// =========================
+// Third survey
+// =========================
+
+class ThirdSurvey extends SecondSurvey {
+  private quest_checkbox_refusal: Array<HTMLInputElement> = [];
+  private quest_fieldset: Array<HTMLFormElement> = [];
+  private quest_hint_refusal: Array<HTMLSelectElement> = [];
+
+  constructor (a_island_id : string, a_response_ids : Array<string>, a_checkbox_ids : Array<string>) {
+    super(a_island_id, a_response_ids);
+    for (let i in a_checkbox_ids) {
+      //console.log(i, a_checkbox_ids[i]);
+      this.quest_checkbox_refusal.push( this.island.querySelector('input[name=' + a_checkbox_ids[i] + '_refusal]') );
+      this.quest_fieldset.push( this.island.querySelector('form fieldset fieldset.' + a_checkbox_ids[i]) );
+      this.quest_hint_refusal.push( this.island.querySelector('select[name=' + a_checkbox_ids[i] + '_refusal]') );
+    }
+  }
+
+  apply_disables_on_form() {
+    //console.log('a bit more');
+    for (let i in this.quest_checkbox_refusal) {
+      if(this.quest_checkbox_refusal[i].checked){
+        this.quest_fieldset[i].disabled = true;
+        this.quest_hint_refusal[i].disabled = false;
+      } else {
+        this.quest_fieldset[i].disabled = false;
+        this.quest_hint_refusal[i].disabled = true;
+      }
+    }
+  }
+
+}
+
+const c_ThirdSurvey_questIds : Array<string> = ['question1', 'question2', 'question3'];
+
+const c_ThirdSurvey_respIds : Array<string> = [
+  'shape_triangle', 'shape_round', 'shape_square', 'shape_rectangle',
+  'conf_3i0e', 'conf_2i1e', 'conf_2i2e', 'conf_3e', 'conf_dontcare',
+  'equip_slide', 'equip_board', 'equip_jacuzzi', 'equip_dontcare'];
+
+const third_survey = new ThirdSurvey('#survey-3', c_ThirdSurvey_respIds, c_ThirdSurvey_questIds);
 
 
