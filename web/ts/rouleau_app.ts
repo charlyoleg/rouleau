@@ -228,6 +228,7 @@ abstract class AbstractVoteIsland {
         this.field_status.innerHTML = messages.voteStatus_invalidSubmit + this.form_check_message;
         this.field_status.style.background = colors.voteStatus_nok;
       }
+      this.apply_disable_on_reset();
     });
   }
 
@@ -251,6 +252,15 @@ abstract class AbstractVoteIsland {
     } else {
       this.the_fieldset.disabled = false;
       this.hint_refusal.disabled = true;
+    }
+    this.apply_disable_on_reset();
+  }
+
+  apply_disable_on_reset() {
+    if (! this.one_submit) {
+      this.button_reset.disabled = true;
+    } else {
+      this.button_reset.disabled = false;
     }
   }
 
