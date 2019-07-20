@@ -26,7 +26,7 @@ fingerprint.build_date = current_date.toUTCString();
 //fingerprint.username = 'charlyoleg';
 
 let gitInfo = gitRepoInfo();
-console.log(gitInfo); // investigating a bug of git-repo-info
+//console.log(gitInfo); // investigating a bug of git-repo-info
 
 //console.log(gitInfo.root);
 if(gitInfo.root !== null){

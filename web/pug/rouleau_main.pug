@@ -40,6 +40,37 @@ mixin majority_judgment(name)
     option(value='don-t-know') don't know (?)
     option(value='indecent') indecent (-99)
 
+mixin importance(name)
+  select(name= name)
+    option(value='primordial') primordial
+    option(value='very-important') very important
+    option(value='important') important
+    option(value='nice-to-have') nice-to-have
+    option(value='don-t-care', selected=true) don't care
+    option(value='not-important') not important
+    option(value='should-not-be-considered') should not be considered
+    option(value='don-t-know') don't know
+
+mixin priority(name)
+  select(name= name)
+    option(value='urgent') urgent
+    option(value='high-priority') high-priority
+    option(value='medium-priority') medium priority
+    option(value='low-priority') low priority
+    option(value='don-t-care', selected=true) don't care
+    option(value='not a priority') not a priority
+    option(value='should-not-be-implemented') should not be implemented
+    option(value='don-t-know') don't know
+
+mixin budget(name)
+  input(type='range', min='0', max='100', step='1')
+  | % Up to EUR
+  input(type='number', placeholder='0.00', min='0', step='0.01', value='0')
+
+mixin point(name)
+  input(type='range', min='0', max='10', step='1')
+
+
 main
   nav.navigo
     a(href='#') Top
@@ -229,22 +260,88 @@ main
       .water#importance
         .island
           h1 An importance list
-          p lali lala 7
+          p What are the most important aspects to be considered in the design of the new public bath?
+          form
+            fieldset
+              .drag the equipement
+                +importance('equipement')
+              .drag the sizes of baths
+                +importance('size')
+              .drag the number of baths
+                +importance('number')
+              .drag indoor/outdoor
+                +importance('indoor-outdoor')
+          .form_status Positions and drop-down selections don't fit
+          +final_action
 
       .water#priority
         .island
           h1 A priority list
-          p lali lala 8
+          p What are your priorities for the scout camp?
+          form
+            fieldset
+              .drag play guitar and sing songs with comrade
+                +priority('guitar-songs')
+              .drag walks through the mountains
+                +priority('walks')
+              .drag build a nice camp
+                +priority('building')
+              .drag long campfire evening
+                +priority('campfire')
+              .drag great games
+                +priority('games')
+              .drag play sport
+                +priority('sport')
+          .form_status Positions and drop-down selections don't fit
+          +final_action
 
       .water#budget
         .island
-          h1 Orientations budgétaires
-          p lali lala 8
+          h1 Budgetary orientations
+          p How should we spend the money of the scout camp?
+          form
+            fieldset
+              p food
+                +budget('food')
+              p a new compass
+                +budget('compass')
+              p a rubber dinghy
+                +budget('rubber-dinghy')
+              p team flags
+                +budget('flags')
+              p a football ball
+                +budget('ball')
+              p a song book
+                +budget('song-book')
+              p a axe
+                +budget('axe')
+          .form_status Total of the budget proposal
+          +final_action
 
       .water#points
         .island
-          h1 Le vote à points
-          p lali lala 8
+          h1 Vote for the great game thematic
+          p Which subject do we choose for the final great game of the camp?
+          form
+            fieldset
+              p The jungle book
+                +point('mowgli')
+              p The stars in the sky
+                +point('stars')
+              p The indian ocean
+                +point('ocean')
+              p scandinavian food
+                +point('scandinavian')
+              p forest and wolfs
+                +point('wolfs')
+              p exotic fish
+                +point('exotic')
+              p caribean voodoo
+                +point('voodoo')
+              p bécassine
+                +point('becassine')
+          .form_status Total of your point is 10: Great!
+          +final_action
 
       .water#rest-js
         .island
