@@ -346,12 +346,32 @@ main
       .water#rest-js
         .island
           h1 Playing with the Rest-js server
-          p lali lala 8
+          p A rest-service to count poks and send messages
+          .restjs_receiver
+            button.button_restjs_read(type='button') Read the Rest-js-server
+            .restjs_receiver_log
+              p Today we have 5 poks
+              p 2019/07/21 : Joyeuse fete les Belges
+              p 2019/07/22 : C'est lundi
+          .restjs_pok
+            button.button_restjs_pok(type='button') Pok the Rest-js-server
+          .restjs_message
+            input(type='text')
+            button.button_restjs_message(type='button') Send the message to the Rest-js-server
 
       .water#rest-py
         .island
           h1 Playing with the Rest-py server
-          p lali lala 8
+          p A rest-service to count the donations
+          .restpy_receiver
+            button.button_restpy_read(type='button') Read the Rest-py-server
+            .restpy_receiver_log
+              p Total receive donation: 23.20 EUR
+              p 2019/07/19 : 2.50 EUR
+              p 2019/07/21 : 7.30 EUR
+          .restpy_donation
+            input(type='number', placeholder='0.00', min='0', step='0.01', value='0.00')
+            button.button_restpy_donation(type='button') Send the donation to the Rest-py-server
 
     aside.right_side_shutter
       input#right_side_checkbox(type='checkbox', checked=true)
