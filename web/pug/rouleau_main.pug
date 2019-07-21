@@ -274,6 +274,7 @@ main
                 +importance('indoor-outdoor')
           .form_status
             span Positions and drop-down selections don't fit
+            button(type='button') Reorder the items according to the drop-down
           +final_action
 
       .water#priority
@@ -296,6 +297,7 @@ main
                 +priority('sport')
           .form_status
             span Positions and drop-down selections don't fit
+            button(type='button') Reorder the items according to the drop-down
           +final_action
 
       .water#budget
@@ -351,16 +353,20 @@ main
           h1 Playing with the Rest-js server
           p A rest-service to count poks and send messages
           .restjs_receiver
-            button.button_restjs_read(type='button') Read the Rest-js-server
+            .flex_for_one
+              button(type='button') Get info from the Rest-js-server
             .restjs_receiver_log
               p Today we have 5 poks
               p 2019/07/21 : Joyeuse fete les Belges
               p 2019/07/22 : C'est lundi
           .restjs_pok
-            button.button_restjs_pok(type='button') Pok the Rest-js-server
+            .flex_for_one
+              button(type='button') Pok the Rest-js-server
           .restjs_message
-            input(type='text')
-            button.button_restjs_message(type='button') Send the message to the Rest-js-server
+            p Write a message to the world:
+            .flex_for_two
+              input(type='text')
+              button(type='button') Send the message to the Rest-js-server
 
       .water#rest-py
         .island
@@ -368,7 +374,7 @@ main
           p A rest-service to count the donations
           .restpy_receiver
             .flex_for_one
-              button.button_restpy_read(type='button') Read the Rest-py-server
+              button(type='button') Get info from the Rest-py-server
             .restpy_receiver_log
               p Total receive donation: 23.20 EUR
               p 2019/07/19 : 2.50 EUR
@@ -377,7 +383,7 @@ main
             p How much to you want to give?
             .flex_for_two
               input(type='number', placeholder='0.00', min='0', step='0.01', value='0.00')
-              button.button_restpy_donation(type='button') Send the donation to the Rest-py-server
+              button(type='button') Send the donation to the Rest-py-server
 
     aside.right_side_shutter
       input#right_side_checkbox(type='checkbox', checked=true)
