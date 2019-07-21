@@ -242,10 +242,26 @@ footer h2 {
   font-weight: 400;
 }
 
-.island form p {
+.island form p.process_question {
   margin: 0.1em;
   font-weight: 100;
   font-style: italic;
+}
+
+.island p.vote_question {
+  margin-left: 0.1em;
+  margin-right: 0.1em;
+  margin-top: 3.0em;
+  margin-bottom: 0.5em;
+  font-weight: 400;
+}
+
+.island form p.pre_majority_judgment {
+  margin-left: 2.0em;
+  margin-right: 1.0em;
+  margin-top: 0.5em;
+  margin-bottom: 0.5em;
+  font-weight: 400;
 }
 
 .island form label {
@@ -253,6 +269,18 @@ footer h2 {
   font-style: normal;
   font-size: 1em;
   font-weight: 400;
+}
+
+.island form fieldset {
+  border: none;
+}
+
+.island fieldset {
+  border: none;
+}
+
+.island form fieldset .refusal {
+  margin-left: 1.0em;
 }
 
 .final_refusal {
@@ -268,6 +296,43 @@ footer h2 {
   font-size: 0.8em;
   font-weight: 400;
 }
+
+.drag {
+  padding: 0.6em;
+  margin: 0.4em;
+  border-radius: 0.5em;
+  background-color: #bbbb00;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.form_status {
+  text-align: right;
+}
+
+.form_status span {
+  background-color: #ff9966;
+}
+
+.flex_for_one {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.flex_for_two {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
 
 // ============================
 // Nice numbered nested ordered-list

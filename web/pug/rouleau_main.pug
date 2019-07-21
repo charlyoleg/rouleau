@@ -1,7 +1,7 @@
 //- rouleau_main.pug
 
 mixin a_refusal(name, msg)
-  form(class= name)
+  fieldset.refusal(class= name)
     label
       input(type='checkbox', name= name)
       = msg
@@ -29,7 +29,7 @@ mixin final_action
   .log
 
 mixin majority_judgment(name)
-  select(name= name)
+  select.majority_judgment(name= name)
     option(value='excellent') excellent (4)
     option(value='very-good') very good (3)
     option(value='good') good (2)
@@ -41,7 +41,7 @@ mixin majority_judgment(name)
     option(value='indecent') indecent (-99)
 
 mixin importance(name)
-  select(name= name)
+  select.importance(name= name)
     option(value='primordial') primordial
     option(value='very-important') very important
     option(value='important') important
@@ -52,7 +52,7 @@ mixin importance(name)
     option(value='don-t-know') don't know
 
 mixin priority(name)
-  select(name= name)
+  select.priority(name= name)
     option(value='urgent') urgent
     option(value='high-priority') high-priority
     option(value='medium-priority') medium priority
@@ -63,12 +63,13 @@ mixin priority(name)
     option(value='don-t-know') don't know
 
 mixin budget(name)
-  input(type='range', min='0', max='100', step='1')
-  | % Up to EUR
-  input(type='number', placeholder='0.00', min='0', step='0.01', value='0')
+  span.budget
+    input(type='range', min='0', max='100', step='1')
+    | % Up to EUR
+    input(type='number', placeholder='0.00', min='0', step='0.01', value='0')
 
 mixin point(name)
-  input(type='range', min='0', max='10', step='1')
+  input.point(type='range', min='0', max='10', step='1')
 
 
 main
@@ -137,7 +138,7 @@ main
           blockquote "Any blue swimming trunks will be prohibited in all public baths of the city."
           form
             fieldset
-              p Do you agree with the following proposal?
+              p.process_question Do you agree with the following proposal?
               label
                 input(type='radio', name='radio_prop1', value='yes')
                 |  I approve this proposal
@@ -182,18 +183,18 @@ main
       .water#survey-2
         .island
           h1 Second survey
-          p Which game would you like to play?
+          p.vote_question Which game would you like to play?
           form
             fieldset
-              p football
+              p.pre_majority_judgment football
                 +majority_judgment('football')
-              p pétanque
+              p.pre_majority_judgment pétanque
                 +majority_judgment('petanque')
-              p belote
+              p.pre_majority_judgment belote
                 +majority_judgment('belote')
-              p marelle
+              p.pre_majority_judgment marelle
                 +majority_judgment('marelle')
-              p uno
+              p.pre_majority_judgment uno
                 +majority_judgment('uno')
           +final_action
 
@@ -204,39 +205,39 @@ main
           | Same questions as the first survey but in an other format.
           form
             fieldset
-              p How should be the shape of the pool?
+              p.vote_question How should be the shape of the pool?
               fieldset.question1
-                p triangle
+                p.pre_majority_judgment triangle
                   +majority_judgment('shape_triangle')
-                p round
+                p.pre_majority_judgment round
                   +majority_judgment('shape_round')
-                p square
+                p.pre_majority_judgment square
                   +majority_judgment('shape_square')
-                p rectangle
+                p.pre_majority_judgment rectangle
                   +majority_judgment('shape_rectangle')
               +a_refusal('question1_refusal', "I don't want to vote to this question. Hints:")
-              p How will be the configuration of the pools?
+              p.vote_question How will be the configuration of the pools?
               fieldset.question2
-                p 3 internal pools
+                p.pre_majority_judgment 3 internal pools
                   +majority_judgment('conf_3i0e')
-                p 2 internal pools and 1 external pool
+                p.pre_majority_judgment 2 internal pools and 1 external pool
                   +majority_judgment('conf_2i1e')
-                p 2 internal and 2 external pools
+                p.pre_majority_judgment 2 internal and 2 external pools
                   +majority_judgment('conf_2i2e')
-                p 3 external pools
+                p.pre_majority_judgment 3 external pools
                   +majority_judgment('conf_3e')
-                p not relevant for me
+                p.pre_majority_judgment not relevant for me
                   +majority_judgment('conf_dontcare')
               +a_refusal('question2_refusal', "I don't want to vote to this question. Hints:")
-              p Which equipment do you want?
+              p.vote_question Which equipment do you want?
               fieldset.question3
-                p slide
+                p.pre_majority_judgment slide
                   +majority_judgment('equip_slide')
-                p diving board
+                p.pre_majority_judgment diving board
                   +majority_judgment('equip_board')
-                p jacuzzi
+                p.pre_majority_judgment jacuzzi
                   +majority_judgment('equip_jacuzzi')
-                p don't care
+                p.pre_majority_judgment don't care
                   +majority_judgment('equip_dontcare')
               +a_refusal('question3_refusal', "I don't want to vote to this question. Hints:")
           +final_action
@@ -244,34 +245,35 @@ main
       .water#proposal-preparation
         .island
           h1 The preparation of a proposal
-          p What will be the exact wording of the proposal?
+          p.vote_question What will be the exact wording of the proposal?
           form
             fieldset
-              p "Any blue swimming trunks will be prohibited in all public baths of the city."
+              p.pre_majority_judgment "Any blue swimming trunks will be prohibited in all public baths of the city."
                 +majority_judgment('prop1')
-              p "Any blue swimming trunks will be prohibited in one public baths of the city."
+              p.pre_majority_judgment "Any blue swimming trunks will be prohibited in one public baths of the city."
                 +majority_judgment('prop2')
-              p "Any blue swimming trunks will be prohibited in all public sona of the city."
+              p.pre_majority_judgment "Any blue swimming trunks will be prohibited in all public sona of the city."
                 +majority_judgment('prop3')
-              p "Any dark blue swimming trunks will be prohibited in all public baths of the city."
+              p.pre_majority_judgment "Any dark blue swimming trunks will be prohibited in all public baths of the city."
                 +majority_judgment('prop4')
           +final_action
 
       .water#importance
         .island
           h1 An importance list
-          p What are the most important aspects to be considered in the design of the new public bath?
+          p.vote_question What are the most important aspects to be considered in the design of the new public bath?
           form
             fieldset
-              .drag the equipement
+              .drag(draggable='true') the equipement
                 +importance('equipement')
-              .drag the sizes of baths
+              .drag(draggable='true') the sizes of baths
                 +importance('size')
-              .drag the number of baths
+              .drag(draggable='true') the number of baths
                 +importance('number')
-              .drag indoor/outdoor
+              .drag(draggable='true') indoor/outdoor
                 +importance('indoor-outdoor')
-          .form_status Positions and drop-down selections don't fit
+          .form_status
+            span Positions and drop-down selections don't fit
           +final_action
 
       .water#priority
@@ -280,19 +282,20 @@ main
           p What are your priorities for the scout camp?
           form
             fieldset
-              .drag play guitar and sing songs with comrade
+              .drag(draggable='true') play guitar and sing songs with comrade
                 +priority('guitar-songs')
-              .drag walks through the mountains
+              .drag(draggable='true') walks through the mountains
                 +priority('walks')
-              .drag build a nice camp
+              .drag(draggable='true') build a nice camp
                 +priority('building')
-              .drag long campfire evening
+              .drag(draggable='true') long campfire evening
                 +priority('campfire')
-              .drag great games
+              .drag(draggable='true') great games
                 +priority('games')
-              .drag play sport
+              .drag(draggable='true') play sport
                 +priority('sport')
-          .form_status Positions and drop-down selections don't fit
+          .form_status
+            span Positions and drop-down selections don't fit
           +final_action
 
       .water#budget
@@ -364,14 +367,17 @@ main
           h1 Playing with the Rest-py server
           p A rest-service to count the donations
           .restpy_receiver
-            button.button_restpy_read(type='button') Read the Rest-py-server
+            .flex_for_one
+              button.button_restpy_read(type='button') Read the Rest-py-server
             .restpy_receiver_log
               p Total receive donation: 23.20 EUR
               p 2019/07/19 : 2.50 EUR
               p 2019/07/21 : 7.30 EUR
           .restpy_donation
-            input(type='number', placeholder='0.00', min='0', step='0.01', value='0.00')
-            button.button_restpy_donation(type='button') Send the donation to the Rest-py-server
+            p How much to you want to give?
+            .flex_for_two
+              input(type='number', placeholder='0.00', min='0', step='0.01', value='0.00')
+              button.button_restpy_donation(type='button') Send the donation to the Rest-py-server
 
     aside.right_side_shutter
       input#right_side_checkbox(type='checkbox', checked=true)
