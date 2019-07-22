@@ -43,16 +43,17 @@ function precache() {
       '/css/rouleau_style.css',
       '/js/rouleau_sub.js',
       '/js/rouleau_app.js',
-      '/img/mouse.svg',
       '/img/antenne.svg',
-      '/img/thunder.svg',
+      '/img/bat.svg',
       '/img/boat.svg',
       '/img/escargot.svg',
-      '/img/wurm.svg',
-      '/img/rouleau_header_title.svg',
+      '/img/island_layout.svg',
       '/img/man.svg',
-      '/img/bat.svg',
-      '/img/pirate.svg'
+      '/img/mouse.svg',
+      '/img/pirate.svg',
+      '/img/thunder.svg',
+      '/img/rouleau_header_title.svg',
+      '/img/wurm.svg'
     ]);
   });
 }
